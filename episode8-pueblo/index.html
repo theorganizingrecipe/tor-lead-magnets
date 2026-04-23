@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Series Denver — Episode 8 | The Organizing Recipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #FF7B5F;
+    --navy: #26447D;
+    --blue: #0084DD;
+    --cream: #FDF5ED;
+    --dark: #1a1a1a;
+    --mid: #555;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 56px 24px 52px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: rgba(255,123,95,0.10);
+    top: -90px; right: -90px;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(0,132,221,0.09);
+    bottom: -70px; left: -50px;
+  }
+
+  .series-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,123,95,0.15);
+    border: 1px solid rgba(255,123,95,0.3);
+    border-radius: 50px;
+    padding: 6px 16px;
+    margin-bottom: 28px;
+  }
+
+  .series-badge span {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--coral);
+  }
+
+  .episode-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-style: italic;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 6.5vw, 50px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 span {
+    color: var(--coral);
+    font-style: italic;
+  }
+
+  .hero-location {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 28px;
+  }
+
+  .hero-intro {
+    max-width: 560px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+
+  /* INTRO CARD */
+  .intro-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    margin-bottom: 40px;
+    border-left: 4px solid var(--coral);
+    box-shadow: 0 2px 20px rgba(38,68,125,0.06);
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeUp 0.5s ease 0.1s forwards;
+  }
+
+  .intro-card p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--mid);
+  }
+
+  .intro-card p + p {
+    margin-top: 14px;
+  }
+
+  .intro-card strong {
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  /* SECTION BLOCKS */
+  .day-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  .day-label.animate { animation: fadeUp 0.5s ease forwards; }
+
+  .day-pill {
+    background: var(--navy);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    flex-shrink: 0;
+  }
+
+  .day-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(38,68,125,0.12);
+  }
+
+  .day-desc {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(38,68,125,0.5);
+    flex-shrink: 0;
+  }
+
+  /* STEP CARDS */
+  .step-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 24px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 16px rgba(38,68,125,0.05);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .step-card.animate { animation: fadeUp 0.5s ease forwards; }
+
+  .step-icon {
+    width: 44px; height: 44px;
+    background: var(--navy);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .step-body { flex: 1; }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .step-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  .step-tag {
+    display: inline-block;
+    background: rgba(255,123,95,0.1);
+    color: var(--coral);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 50px;
+    margin-top: 12px;
+  }
+
+  /* DECISION ROW */
+  .decision-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 24px 0;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .decision-row.animate { animation: fadeUp 0.5s ease forwards; }
+
+  .decision-pill {
+    border-radius: 12px;
+    padding: 18px 12px;
+    text-align: center;
+  }
+
+  .decision-pill.keep { background: rgba(0,132,221,0.08); border: 1.5px solid rgba(0,132,221,0.2); }
+  .decision-pill.donate { background: rgba(255,123,95,0.08); border: 1.5px solid rgba(255,123,95,0.2); }
+  .decision-pill.trash { background: rgba(38,68,125,0.06); border: 1.5px solid rgba(38,68,125,0.15); }
+
+  .decision-pill .dp-icon { font-size: 22px; margin-bottom: 6px; }
+  .decision-pill .dp-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .decision-pill.keep .dp-label { color: var(--blue); }
+  .decision-pill.donate .dp-label { color: var(--coral); }
+  .decision-pill.trash .dp-label { color: var(--navy); }
+  .decision-pill .dp-desc {
+    font-size: 11px;
+    color: var(--mid);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* INSIGHT BOX */
+  .insight-box {
+    background: rgba(0,132,221,0.06);
+    border: 1.5px solid rgba(0,132,221,0.15);
+    border-radius: 14px;
+    padding: 22px 20px;
+    margin: 24px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .insight-box.animate { animation: fadeUp 0.5s ease forwards; }
+
+  .insight-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+  .insight-text {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--navy);
+    font-weight: 400;
+  }
+
+  .insight-text strong { font-weight: 600; }
+
+  /* HEART NOTE — sensitive section */
+  .heart-note {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 32px 28px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  .heart-note.animate { animation: fadeUp 0.5s ease forwards; }
+
+  .heart-note::before {
+    content: '🧡';
+    font-size: 90px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    opacity: 0.06;
+    line-height: 1;
+  }
+
+  .heart-note-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 14px;
+  }
+
+  .heart-note p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.75;
+    position: relative;
+  }
+
+  /* RESULTS GRID */
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 28px 0;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .results-grid.animate { animation: fadeUp 0.5s ease forwards; }
+
+  .result-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 16px;
+    box-shadow: 0 2px 12px rgba(38,68,125,0.06);
+    text-align: center;
+  }
+
+  .result-card .rc-icon { font-size: 24px; margin-bottom: 8px; }
+  .result-card .rc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .result-card .rc-desc {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--mid);
+  }
+
+  /* QUOTE */
+  .quote-block {
+    background: var(--coral);
+    border-radius: 16px;
+    padding: 36px 32px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  .quote-block.animate { animation: fadeUp 0.5s ease forwards; }
+
+  .quote-block::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 140px;
+    color: rgba(255,255,255,0.1);
+    position: absolute;
+    top: -20px; left: 16px;
+    line-height: 1;
+  }
+
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .quote-author {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* SECTION TITLE */
+  .section-title-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 40px 0 20px;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .section-title-text.animate { animation: fadeUp 0.5s ease forwards; }
+
+  /* CTA */
+  .cta-block {
+    background: linear-gradient(135deg, var(--coral) 0%, #e85d3f 100%);
+    border-radius: 16px;
+    padding: 44px 28px;
+    text-align: center;
+    margin-top: 44px;
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  .cta-block.animate { animation: fadeUp 0.5s ease forwards; }
+
+  .cta-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .cta-block p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.65;
+    margin-bottom: 28px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: var(--coral);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 15px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  }
+
+  .cta-social {
+    margin-top: 18px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 28px;
+    font-size: 12px;
+    color: #aaa;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+
+  footer a { color: var(--coral); text-decoration: none; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .results-grid { grid-template-columns: 1fr; }
+    .decision-row { grid-template-columns: 1fr; }
+    .step-card { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="series-badge"><span>✦ Home Series Denver ✦</span></div>
+  <p class="episode-num">Episode 08 &nbsp;·&nbsp; Chronic Clutter Case</p>
+  <h1>From <span>Overwhelm</span><br>to a System That Works</h1>
+  <p class="hero-location">📍 Pueblo, Colorado</p>
+  <p class="hero-intro">This is the full step-by-step breakdown of everything we did in this home — room by room, decision by decision. The same method I use in every single project, no matter how much there is.</p>
+</div>
+
+<div class="main">
+
+  <!-- INTRO -->
+  <div class="intro-card">
+    <p>Every home tells a story. This one told the story of a family doing their best — raising kids, building routines, living life — while the weight of accumulated things quietly took over their space.</p>
+    <p>This was a <strong>chronic clutter case.</strong> The kind where you don't even know where to start anymore. The kind that makes you feel stuck before you even try.</p>
+    <p>That's exactly where <strong>The Organizing Recipe</strong> comes in. Same method. Every time. No judgment — just a process.</p>
+  </div>
+
+  <!-- THE METHOD INTRO -->
+  <p class="section-title-text" id="s1">The TOR Method: How We Always Start</p>
+
+  <div class="insight-box" id="i1">
+    <div class="insight-icon">🥄</div>
+    <p class="insight-text"><strong>The golden rule:</strong> Organization is not about perfection. It's about creating a system that actually works for the people living in that home — their schedule, their habits, their real life.</p>
+  </div>
+
+  <div class="step-card" id="sc1">
+    <div class="step-icon">🏠</div>
+    <div class="step-body">
+      <p class="step-title">Start with the most congested, most-used areas</p>
+      <p class="step-text">We don't start where it looks easiest. We start where life actually happens — the spaces the family uses every single day. That's where the biggest relief comes from, and that's what keeps the momentum going.</p>
+      <span class="step-tag">TOR Principle</span>
+    </div>
+  </div>
+
+  <div class="step-card" id="sc2">
+    <div class="step-icon">🧹</div>
+    <div class="step-body">
+      <p class="step-title">Floor first. Always.</p>
+      <p class="step-text">Before anything else, we clear the floor. This is non-negotiable. You can't work in a space you can't move through. Creating physical space is what allows the process to begin — mentally and physically.</p>
+      <span class="step-tag">Step 01</span>
+    </div>
+  </div>
+
+  <div class="step-card" id="sc3">
+    <div class="step-icon">🗂️</div>
+    <div class="step-body">
+      <p class="step-title">Remove trash + build piles by category</p>
+      <p class="step-text">Trash out first — no hesitation. Then we pull everything that doesn't belong in that room and start grouping by category. This is where you begin to see what you actually have, often for the first time in years.</p>
+      <span class="step-tag">Step 02</span>
+    </div>
+  </div>
+
+  <!-- DECISION ROW -->
+  <div class="decision-row" id="dr1">
+    <div class="decision-pill keep">
+      <div class="dp-icon">✅</div>
+      <div class="dp-label">Keep</div>
+      <div class="dp-desc">It has a home and it earns its place</div>
+    </div>
+    <div class="decision-pill donate">
+      <div class="dp-icon">🧡</div>
+      <div class="dp-label">Donate</div>
+      <div class="dp-desc">Good condition, someone else needs it more</div>
+    </div>
+    <div class="decision-pill trash">
+      <div class="dp-icon">🗑️</div>
+      <div class="dp-label">Trash</div>
+      <div class="dp-desc">Expired, broken, or no longer serving anyone</div>
+    </div>
+  </div>
+
+  <div class="insight-box" id="i2">
+    <div class="insight-icon">💡</div>
+    <p class="insight-text"><strong>Pro tip on paperwork:</strong> Documents that need time to review — don't let them block your momentum. Create a "pending pile," set it aside, and come back to it once the space is organized. Process the space first, then the papers.</p>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-label" id="d1">
+    <div class="day-pill">Day 01</div>
+    <div class="day-line"></div>
+    <div class="day-desc">Master Bedroom + Closet</div>
+  </div>
+
+  <div class="step-card" id="sc4">
+    <div class="step-icon">🛏️</div>
+    <div class="step-body">
+      <p class="step-title">Master Bedroom — Clearing the Foundation</p>
+      <p class="step-text">Floor first. Then the bed — remove all clothing and objects that don't belong there. Once everything is off every surface, we categorize and make decisions. What stays gets a dedicated home. What doesn't have one? We create it.</p>
+      <span class="step-tag">Bedroom Reset</span>
+    </div>
+  </div>
+
+  <div class="step-card" id="sc5">
+    <div class="step-icon">👗</div>
+    <div class="step-body">
+      <p class="step-title">Closet — Drawer by Drawer, Category by Category</p>
+      <p class="step-text">Everything comes out. T-shirts, pants, dresses, accessories — each category is reviewed, edited, and given its own dedicated zone. The rule that never changes: <strong>what you use every day lives at eye level.</strong> Everything else finds its place — or it leaves.</p>
+      <span class="step-tag">Closet System</span>
+    </div>
+  </div>
+
+  <div class="insight-box" id="i3">
+    <div class="insight-icon">👁️</div>
+    <p class="insight-text"><strong>The eye-level rule:</strong> If you have to dig for it, you won't maintain it. Daily-use items live between shoulder and hip height — visible, accessible, effortless. Everything else is stored by frequency of use.</p>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-label" id="d2">
+    <div class="day-pill">Day 02</div>
+    <div class="day-line"></div>
+    <div class="day-desc">Entryway · Dining Room · Kitchen · Pantry</div>
+  </div>
+
+  <div class="step-card" id="sc6">
+    <div class="step-icon">🚪</div>
+    <div class="step-body">
+      <p class="step-title">Entryway + Dining Room — Redesigning for Real Life</p>
+      <p class="step-text">The dining room had become the homeschool zone. Instead of fighting that reality, we honored it — and redesigned the space so both functions could coexist with intention. Every zone got a clear purpose. Clutter out, function in.</p>
+      <span class="step-tag">Space Redesign</span>
+    </div>
+  </div>
+
+  <div class="step-card" id="sc7">
+    <div class="step-icon">🍳</div>
+    <div class="step-body">
+      <p class="step-title">Kitchen — Built for a Family That Cooks</p>
+      <p class="step-text">This family cooks — really cooks. So the kitchen layout had to reflect that. The workflow, the counter space, the accessibility of tools — everything was reorganized around how they actually use this kitchen every day. Not how a magazine would style it. How they live in it.</p>
+      <span class="step-tag">Kitchen System</span>
+    </div>
+  </div>
+
+  <div class="step-card" id="sc8">
+    <div class="step-icon">🥫</div>
+    <div class="step-body">
+      <p class="step-title">Pantry — Full Reset with a System for Everyone</p>
+      <p class="step-text">Everything came out. Expired items: gone. Good products they no longer wanted: donated. What remained was organized into intentional zones — a snack area at kids' height, a breakfast station, a dinner prep area, a baking section. Every item accessible, every zone logical, every family member served.</p>
+      <span class="step-tag">Pantry Zones</span>
+    </div>
+  </div>
+
+  <!-- SENSITIVE HEART NOTE -->
+  <div class="heart-note" id="hn1">
+    <div class="heart-note-label">✦ A Note from Lorena</div>
+    <p>Every home I walk into teaches me something. This project was one that stayed with me. When a home reaches a point of chronic accumulation, it often carries more than just things — it carries stress, exhaustion, and sometimes circumstances beyond anyone's control. I approach every space with that in mind. My job is never to judge. It's to help. And sometimes, the most important thing I can offer is showing up with a plan when someone has run out of the energy to make one.</p>
+  </div>
+
+  <!-- RESULTS -->
+  <p class="section-title-text" id="s2">The Result After Two Days</p>
+
+  <div class="results-grid" id="rg1">
+    <div class="result-card">
+      <div class="rc-icon">🛏️</div>
+      <div class="rc-title">Master Bedroom</div>
+      <div class="rc-desc">Cleared, categorized, and every item with a dedicated home</div>
+    </div>
+    <div class="result-card">
+      <div class="rc-icon">👗</div>
+      <div class="rc-title">Full Closet System</div>
+      <div class="rc-desc">Drawer by drawer — sorted, edited, and designed for daily ease</div>
+    </div>
+    <div class="result-card">
+      <div class="rc-icon">🏫</div>
+      <div class="rc-title">Homeschool Zone</div>
+      <div class="rc-desc">Reassigned within the dining room with its own intentional space</div>
+    </div>
+    <div class="result-card">
+      <div class="rc-icon">🍳</div>
+      <div class="rc-title">Kitchen + Pantry</div>
+      <div class="rc-desc">Zoned for a family that cooks — counters clear, everything accessible</div>
+    </div>
+  </div>
+
+  <div class="insight-box" id="i4">
+    <div class="insight-icon">📋</div>
+    <p class="insight-text"><strong>There's still more to do — and that's okay.</strong> A chronic clutter case doesn't resolve in two days. What does happen in two days is a foundation, a plan, and the momentum to keep going. This family left Day 2 with a roadmap — not just a cleaner home.</p>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-block" id="qb1">
+    <p class="quote-text">"Organization isn't about having less. It's about making room for what actually matters — starting with the space you come home to every day."</p>
+    <p class="quote-author">— Lorena Duarte &nbsp;·&nbsp; Founder, The Organizing Recipe</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block" id="cb1">
+    <h3>Ready to start your own process?</h3>
+    <p>Whether you're in Denver or anywhere in the country — I can help you build a system that actually works for your home and your life. No judgment. No pressure. Just a plan.</p>
+    <a href="https://www.theorganizingrecipe.com/book-online" class="cta-btn" target="_blank">Book Your Session →</a>
+    <p class="cta-social">📍 Denver, CO &nbsp;·&nbsp; 🌎 Virtual Sessions Nationwide &nbsp;·&nbsp; @theorganizingrecipe</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© The Organizing Recipe &nbsp;·&nbsp; <a href="https://www.theorganizingrecipe.com" target="_blank">theorganizingrecipe.com</a></p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('animate');
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  const animatables = [
+    's1','s2','i1','i2','i3','i4',
+    'sc1','sc2','sc3','sc4','sc5','sc6','sc7','sc8',
+    'dr1','d1','d2','hn1','rg1','qb1','cb1'
+  ];
+
+  animatables.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
