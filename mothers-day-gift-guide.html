@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Things Every Mom Deserves in Her Home — The Organizing Recipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #FF7B5F;
+    --coral-light: #FFE8E3;
+    --navy: #26447D;
+    --blue: #0084DD;
+    --cream: #FDF5ED;
+    --warm: #F5E6D3;
+    --dark: #1A1A2E;
+    --white: #ffffff;
+    --gold: #C9A96E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 80px 24px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(255,123,95,0.12);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(201,169,110,0.1);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,123,95,0.15);
+    border: 1px solid rgba(255,123,95,0.3);
+    color: var(--coral);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    border-radius: 100px;
+    margin-bottom: 36px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 7vw, 72px);
+    color: white;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+  }
+
+  .hero h1 em {
+    color: var(--coral);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 3vw, 24px);
+    color: var(--gold);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    max-width: 500px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 16px 40px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(255,123,95,0.4);
+  }
+
+  /* FLOWER DIVIDER */
+  .divider {
+    text-align: center;
+    padding: 40px 24px 0;
+    font-size: 28px;
+    letter-spacing: 12px;
+    opacity: 0.4;
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 64px 24px 48px;
+    max-width: 660px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 16px;
+  }
+
+  .intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--navy);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .intro p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* LORENA NOTE */
+  .lorena-note {
+    background: white;
+    border-left: 4px solid var(--coral);
+    border-radius: 0 16px 16px 0;
+    padding: 32px 36px;
+    max-width: 640px;
+    margin: 0 auto 72px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+
+  .lorena-note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--navy);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  .lorena-note .sig {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    color: var(--coral);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* 5 THINGS SECTION */
+  .things-section {
+    background: var(--navy);
+    padding: 80px 24px;
+  }
+
+  .things-section .label { color: var(--coral); }
+
+  .things-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .things-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 5vw, 46px);
+    color: white;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .things-header p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .things-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .thing-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 28px;
+    align-items: start;
+    transition: background 0.25s, transform 0.25s;
+  }
+
+  .thing-card:hover {
+    background: rgba(255,255,255,0.09);
+    transform: translateX(6px);
+  }
+
+  .thing-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .thing-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .thing-body p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+
+  .thing-insight {
+    background: rgba(255,123,95,0.1);
+    border-left: 3px solid var(--coral);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* GIFT CARDS */
+  .gift-section {
+    padding: 80px 24px;
+    background: var(--warm);
+  }
+
+  .gift-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+
+  .gift-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--navy);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .gift-header p {
+    font-size: 15px;
+    color: #777;
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .gift-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+
+  .gift-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gift-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .gift-card.mini::before { background: #C8A4D4; }
+  .gift-card.room::before { background: #90BBE0; }
+  .gift-card.harmony::before { background: #8DC98D; }
+  .gift-card.reset::before { background: var(--gold); }
+
+  .gift-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+
+  .gift-emoji {
+    font-size: 36px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .gift-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .gift-hrs {
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .gift-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--coral);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .gift-desc {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .gift-tag {
+    display: inline-block;
+    background: var(--coral-light);
+    color: var(--coral);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 100px;
+  }
+
+  .gift-cta-wrap {
+    text-align: center;
+  }
+
+  .btn-gift {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 18px 48px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-gift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(38,68,125,0.3);
+  }
+
+  .gift-note {
+    font-size: 13px;
+    color: #999;
+    margin-top: 16px;
+    font-weight: 300;
+  }
+
+  /* CTA FINAL */
+  .cta-section {
+    background: var(--coral);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: white;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+    max-width: 500px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    display: inline-block;
+    background: white;
+    color: var(--coral);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  }
+
+  .btn-outline-white {
+    display: inline-block;
+    background: transparent;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 36px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline-white:hover {
+    border-color: white;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--dark);
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: white;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+  }
+
+  .footer a {
+    color: var(--coral);
+    text-decoration: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .thing-card {
+      grid-template-columns: 1fr;
+      padding: 28px 24px;
+    }
+    .thing-num {
+      width: 48px;
+      height: 48px;
+      font-size: 22px;
+    }
+    .gift-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">🌸 Mother's Day · Free Guide</div>
+  <h1>5 Things Every Mom<br>Deserves in Her <em>Home</em></h1>
+  <div class="hero-sub">A gift guide for the person who gives everything.</div>
+  <p>Because she's spent years making sure everyone else had what they needed. This is for her.</p>
+  <a href="https://www.theorganizingrecipe.com/book-online" target="_blank" class="hero-cta">Gift Her a Session →</a>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="label">From Lorena's experience</div>
+  <h2>We've been inside dozens of homes in Denver.</h2>
+  <p>And the most overwhelmed spaces always belong to the people who spent the most time taking care of everyone else. This guide is for them — and for you, as you think about how to show up for her.</p>
+</section>
+
+<div class="lorena-note" style="padding-left:24px; padding-right:24px;">
+  <p>"Every time I walk into a client's home, I can feel whether the space is working for her or against her. A mom who can exhale the moment she walks through her door — that's what we're building. Not perfection. Peace."</p>
+  <span class="sig">— Lorena Duarte, Founder of The Organizing Recipe 🥄</span>
+</div>
+
+<!-- 5 THINGS -->
+<section class="things-section">
+  <div class="things-header">
+    <div class="label">The guide</div>
+    <h2>5 Things Every Mom<br>Deserves in Her Home</h2>
+    <p>Not Pinterest perfection. Real, functional spaces that make her daily life easier.</p>
+  </div>
+
+  <div class="things-list">
+
+    <div class="thing-card">
+      <div class="thing-num">1</div>
+      <div class="thing-body">
+        <h3>A Drop Zone That Actually Works</h3>
+        <p>Keys. Bags. Sunglasses. Permission slips. The entry of a home sets the tone for every morning — and most moms start their day in chaos because there's nowhere for things to land intentionally.</p>
+        <div class="thing-insight">💡 A functional drop zone isn't about a pretty basket. It's about a system that survives a Tuesday morning at 7am when everyone is running late.</div>
+      </div>
+    </div>
+
+    <div class="thing-card">
+      <div class="thing-num">2</div>
+      <div class="thing-body">
+        <h3>A Pantry She Can Navigate in the Dark</h3>
+        <p>6am is real. The pantry should be so well organized that she doesn't have to think — just reach. A visual system eliminates decision fatigue before the day even starts.</p>
+        <div class="thing-insight">💡 When you can see everything, you stop buying duplicates. The average family saves $40–60/month just by having a properly organized pantry.</div>
+      </div>
+    </div>
+
+    <div class="thing-card">
+      <div class="thing-num">3</div>
+      <div class="thing-body">
+        <h3>A Closet That Doesn't Judge Her</h3>
+        <p>Not one organized for who she was 5 years ago. Not one full of clothes in two sizes "just in case." A closet built for the life she's actually living — that opens easily, resets quickly, and makes getting dressed feel good.</p>
+        <div class="thing-insight">💡 The hanger trick: face all hangers the same direction. After wearing, flip it. After 3 months, edit everything that never flipped.</div>
+      </div>
+    </div>
+
+    <div class="thing-card">
+      <div class="thing-num">4</div>
+      <div class="thing-body">
+        <h3>A "Chaos Corner" With a System</h3>
+        <p>Every home has one. The drawer, the counter, the chair. We don't eliminate it — we give it a system. Because telling a busy mom to "just keep it tidy" without structure is setting her up to fail.</p>
+        <div class="thing-insight">💡 Controlled chaos is still calm. A basket with a purpose is completely different from a pile with no plan.</div>
+      </div>
+    </div>
+
+    <div class="thing-card">
+      <div class="thing-num">5</div>
+      <div class="thing-body">
+        <h3>At Least One Room That's Entirely Hers</h3>
+        <p>Not the laundry room. Not the kitchen. A space where she resets — that feels calm, clear, and intentional. A bedroom she wants to come home to. A corner that's hers. She's earned it.</p>
+        <div class="thing-insight">💡 Research shows cluttered spaces increase cortisol levels. Her daily stress might not be about work or the kids. It might be about her environment.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GIFT CARDS -->
+<section class="gift-section">
+  <div class="gift-header">
+    <div class="label">The Organizing Recipe™ Gift Cards</div>
+    <h2>Now, your turn.<br>Give her the real gift.</h2>
+    <p>One session with Lorena. Custom systems built for her real life. Results that last beyond the weekend.</p>
+  </div>
+
+  <div class="gift-grid">
+    <div class="gift-card mini">
+      <span class="gift-emoji">🟣</span>
+      <div class="gift-name">Mini Reset</div>
+      <div class="gift-hrs">4 Hours</div>
+      <div class="gift-price">$260</div>
+      <div class="gift-desc">One key area, completely transformed. Perfect for the pantry that stresses her out every morning.</div>
+      <span class="gift-tag">Best starter gift</span>
+    </div>
+
+    <div class="gift-card room">
+      <span class="gift-emoji">🔵</span>
+      <div class="gift-name">Room Revival</div>
+      <div class="gift-hrs">8 Hours</div>
+      <div class="gift-price">$500</div>
+      <div class="gift-desc">A full-room transformation with systems that last. Perfect for the bedroom she never gets to enjoy.</div>
+      <span class="gift-tag">Most popular</span>
+    </div>
+
+    <div class="gift-card harmony">
+      <span class="gift-emoji">🟢</span>
+      <div class="gift-name">Home Harmony</div>
+      <div class="gift-hrs">16 Hours</div>
+      <div class="gift-price">$1,000</div>
+      <div class="gift-desc">Multiple areas, total clarity and flow. For the mom who needs more than one reset.</div>
+      <span class="gift-tag">Complete refresh</span>
+    </div>
+
+    <div class="gift-card reset">
+      <span class="gift-emoji">🥇</span>
+      <div class="gift-name">Home Reset</div>
+      <div class="gift-hrs">24 Hours</div>
+      <div class="gift-price">$1,500</div>
+      <div class="gift-desc">A complete home transformation with tailored systems. For the mom who deserves a full fresh start.</div>
+      <span class="gift-tag">Full transformation</span>
+    </div>
+  </div>
+
+  <div class="gift-cta-wrap">
+    <a href="https://www.theorganizingrecipe.com/book-online" target="_blank" class="btn-gift">Gift Her a Session →</a>
+    <p class="gift-note">Valid 6 months · Transferable · Lorena works with one family at a time</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <h2>She's done enough.<br>Let's do this one for her.</h2>
+  <p>Mother's Day is May 11th. Spots are limited — Lorena works with one family at a time. Don't wait.</p>
+  <div class="cta-buttons">
+    <a href="https://www.theorganizingrecipe.com/book-online" target="_blank" class="btn-white">Book Her Session</a>
+    <a href="https://www.instagram.com/theorganizingrecipe" target="_blank" class="btn-outline-white">@theorganizingrecipe</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">The Organizing Recipe 🥄</div>
+  <p>Denver, CO · <a href="https://www.theorganizingrecipe.com" target="_blank">theorganizingrecipe.com</a> · <a href="https://www.instagram.com/theorganizingrecipe" target="_blank">@theorganizingrecipe</a></p>
+</footer>
+
+</body>
+</html>
