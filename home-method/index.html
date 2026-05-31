@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Organize Your Home in 10 Minutes a Day | The Organizing Recipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral: #FF7B5F;
+  --navy: #26447D;
+  --blue: #0084DD;
+  --cream: #FDF5ED;
+  --white: #fff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins',sans-serif; background:var(--cream); color:var(--navy); overflow-x:hidden; }
+
+/* HERO */
+.hero {
+  background:var(--navy);
+  padding:72px 24px 80px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute;
+  top:-90px; right:-90px;
+  width:300px; height:300px;
+  background:var(--coral); border-radius:50%; opacity:.09;
+}
+.hero::after {
+  content:''; position:absolute;
+  bottom:-70px; left:-70px;
+  width:240px; height:240px;
+  background:var(--blue); border-radius:50%; opacity:.11;
+}
+.badge {
+  display:inline-block;
+  background:var(--coral);
+  color:#fff;
+  font-size:10px; font-weight:700;
+  letter-spacing:2.5px; text-transform:uppercase;
+  padding:8px 20px; border-radius:99px;
+  margin-bottom:30px;
+  position:relative; z-index:1;
+}
+.hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,8vw,58px);
+  font-weight:900; color:#fff;
+  line-height:1.1; margin-bottom:20px;
+  position:relative; z-index:1;
+}
+.hero h1 em { font-style:italic; color:var(--coral); }
+.hero p {
+  font-size:16px; font-weight:300;
+  color:rgba(255,255,255,.6);
+  max-width:420px; margin:0 auto;
+  line-height:1.8;
+  position:relative; z-index:1;
+}
+
+/* LORENA NOTE */
+.lorena {
+  background:var(--cream);
+  padding:72px 24px;
+  text-align:center;
+}
+.lorena-inner { max-width:580px; margin:0 auto; }
+.label {
+  font-size:10px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  color:var(--coral); margin-bottom:18px;
+}
+.lorena h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,5vw,42px);
+  font-weight:900; color:var(--navy);
+  line-height:1.15; margin-bottom:28px;
+}
+.lorena p {
+  font-size:16px; color:#5a6a8a;
+  line-height:1.9; font-weight:300;
+  margin-bottom:20px;
+}
+.lorena p:last-child { margin-bottom:0; }
+
+/* DIVIDER */
+.divider {
+  width:48px; height:3px;
+  background:var(--coral);
+  margin:0 auto 48px;
+  border-radius:99px;
+}
+
+/* METHOD SECTION */
+.method {
+  background:var(--white);
+  padding:72px 24px;
+}
+.method-inner { max-width:640px; margin:0 auto; }
+.method-header { text-align:center; margin-bottom:56px; }
+.method-header h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,5vw,38px);
+  font-weight:900; color:var(--navy);
+  line-height:1.2; margin-bottom:12px;
+}
+.method-header p {
+  font-size:14px; color:#8a9ab5;
+  line-height:1.7;
+}
+
+/* TIME blocks */
+.time-block {
+  margin-bottom:56px;
+}
+.time-block:last-child { margin-bottom:0; }
+
+.time-tag {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--navy);
+  color:#fff;
+  font-size:11px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:8px 18px; border-radius:99px;
+  margin-bottom:28px;
+}
+.time-tag span {
+  background:var(--coral);
+  color:#fff;
+  font-size:10px; font-weight:700;
+  padding:2px 8px; border-radius:99px;
+}
+
+.habit-row {
+  display:flex;
+  gap:16px;
+  padding:22px 0;
+  border-bottom:1px solid #f0e8de;
+  align-items:flex-start;
+}
+.habit-row:last-child { border-bottom:none; }
+
+.habit-number {
+  font-family:'Playfair Display',serif;
+  font-size:28px; font-weight:900;
+  color:var(--coral);
+  min-width:44px;
+  line-height:1;
+  padding-top:4px;
+}
+
+.habit-content h3 {
+  font-size:16px; font-weight:700;
+  color:var(--navy);
+  margin-bottom:6px;
+  line-height:1.3;
+}
+.habit-content p {
+  font-size:13px; color:#8a9ab5;
+  line-height:1.7; font-weight:300;
+}
+.habit-content p strong { color:var(--coral); font-weight:600; }
+
+/* WHY IT WORKS */
+.why {
+  background:var(--navy);
+  padding:72px 24px;
+  text-align:center;
+}
+.why-inner { max-width:580px; margin:0 auto; }
+.why h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,5vw,38px);
+  color:#fff; font-weight:900;
+  line-height:1.2; margin-bottom:20px;
+}
+.why h2 em { font-style:italic; color:var(--coral); }
+.why p {
+  font-size:15px; color:rgba(255,255,255,.55);
+  line-height:1.85; font-weight:300;
+  margin-bottom:20px;
+}
+.why p:last-child { margin-bottom:0; }
+
+/* QUOTE */
+.quote-block {
+  background:var(--cream);
+  padding:64px 24px;
+  text-align:center;
+}
+.quote-inner { max-width:520px; margin:0 auto; }
+blockquote {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,4vw,32px);
+  font-style:italic; font-weight:700;
+  color:var(--navy);
+  line-height:1.3;
+  margin-bottom:20px;
+}
+.quote-attr {
+  font-size:12px; font-weight:600;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--coral);
+}
+
+/* CTA FINAL */
+.cta {
+  background:var(--navy);
+  padding:80px 24px;
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+.cta::before {
+  content:''; position:absolute;
+  top:-80px; right:-80px;
+  width:280px; height:280px;
+  background:var(--coral); border-radius:50%; opacity:.09;
+}
+.cta::after {
+  content:''; position:absolute;
+  bottom:-60px; left:-60px;
+  width:220px; height:220px;
+  background:var(--blue); border-radius:50%; opacity:.11;
+}
+.cta-inner { position:relative; z-index:1; }
+.cta h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,6vw,44px);
+  color:#fff; font-weight:900;
+  line-height:1.15; margin-bottom:16px;
+}
+.cta h2 em { font-style:italic; color:var(--coral); }
+.cta p {
+  font-size:15px; color:rgba(255,255,255,.55);
+  max-width:400px; margin:0 auto 44px;
+  line-height:1.8; font-weight:300;
+}
+.book-btn {
+  display:inline-block;
+  background:var(--coral); color:#fff;
+  font-family:'Poppins',sans-serif;
+  font-size:14px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:20px 48px; border-radius:99px;
+  text-decoration:none;
+  box-shadow:0 10px 32px rgba(255,123,95,.4);
+  transition:transform .2s, box-shadow .2s;
+}
+.book-btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(255,123,95,.5);
+}
+
+/* FOOTER */
+footer {
+  background:#1a2f5e;
+  padding:28px 24px; text-align:center;
+}
+footer p {
+  font-size:10px; color:rgba(255,255,255,.28);
+  letter-spacing:2px; text-transform:uppercase;
+}
+footer span { color:var(--coral); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">Free Resource — The Organizing Recipe</div>
+  <h1>How to organize<br>your home in<br><em>10 minutes a day</em></h1>
+  <p>The exact method I use in every Denver home I walk into. Simple, sustainable, and built for real life.</p>
+</section>
+
+<!-- LORENA NOTE -->
+<section class="lorena">
+  <div class="lorena-inner">
+    <div class="label">A note from Lorena</div>
+    <h2>Your home isn't the problem.<br>Your system is.</h2>
+    <div class="divider"></div>
+    <p>I've been inside dozens of homes across Denver. Every single time, someone apologizes before I even walk through the door. They think the mess is their fault.</p>
+    <p>It never is. The problem is that their home was set up the day they moved in, when they were exhausted, and they've been living with those decisions ever since.</p>
+    <p>What I'm sharing here is the same method I apply in every session. You don't need more storage. You don't need a bigger home. You need 10 minutes and a system that actually works.</p>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method">
+  <div class="method-inner">
+    <div class="method-header">
+      <div class="label">The method</div>
+      <h2>10 minutes. Three moments.<br>One home that finally works.</h2>
+      <p>Split your day into three small windows. That's it. Morning, midday, and night. Together they add up to about 10 minutes — and they change everything.</p>
+    </div>
+
+    <!-- MORNING -->
+    <div class="time-block">
+      <div class="time-tag">
+        Morning <span>3 min</span>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">1</div>
+        <div class="habit-content">
+          <h3>Make your bed before anything else.</h3>
+          <p>Not because it matters aesthetically. Because it signals to your brain that the day has structure. It takes 90 seconds and it sets the tone for every room you enter after.</p>
+        </div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">2</div>
+        <div class="habit-content">
+          <h3>One thing back before you leave any room.</h3>
+          <p>You're already walking through your home in the morning. Just take one item with you. <strong>One item per room, every time.</strong> You won't notice you're doing it. Your home will.</p>
+        </div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">3</div>
+        <div class="habit-content">
+          <h3>If you use it, put it back now.</h3>
+          <p>Not in a pile. Not "later." Right now. This single habit eliminates 80% of the clutter that accumulates by the end of the day. It costs zero extra time.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIDDAY -->
+    <div class="time-block">
+      <div class="time-tag">
+        Throughout the day <span>4 min</span>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">4</div>
+        <div class="habit-content">
+          <h3>Clean while you cook.</h3>
+          <p>Wipe the counter while something's on the stove. Rinse the bowl before it dries. The kitchen resets itself while the food cooks. You walk away from dinner with a clean space instead of a second job.</p>
+        </div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">5</div>
+        <div class="habit-content">
+          <h3>One thing in, one thing out.</h3>
+          <p>Every time something new enters your home, something else leaves. <strong>Always.</strong> This is the rule that keeps homes from slowly filling up over years. It sounds simple because it is.</p>
+        </div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">6</div>
+        <div class="habit-content">
+          <h3>Nothing sits out of place for more than 24 hours.</h3>
+          <p>Not a jacket. Not a bag. Not a piece of mail. Give everything a home and commit to returning it there within a day. When nothing lingers, nothing accumulates.</p>
+        </div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">7</div>
+        <div class="habit-content">
+          <h3>Every item of clothing has a home. Use it.</h3>
+          <p>Clothes are the number one surface cluttering up bedrooms. If it's clean, hang it. If it's dirty, it goes in the hamper. There is no chair, no floor, no corner. <strong>Just those two options.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVENING -->
+    <div class="time-block">
+      <div class="time-tag">
+        Evening reset <span>3 min</span>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">8</div>
+        <div class="habit-content">
+          <h3>3-minute surface reset before bed.</h3>
+          <p>Walk through your main living areas. Clear the counters, pick up the floor, empty the sink. Set a timer if you need to. Three minutes is enough. You'll wake up to a home that already feels calm.</p>
+        </div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">9</div>
+        <div class="habit-content">
+          <h3>5 minutes today = 5 fewer hours this weekend.</h3>
+          <p>This is math, not motivation. The people who "deep clean" on Saturdays are the ones who skipped the daily reset all week. Small daily actions make the big cleanups disappear.</p>
+        </div>
+      </div>
+
+      <div class="habit-row">
+        <div class="habit-number">10</div>
+        <div class="habit-content">
+          <h3>An organized home is a quiet mind.</h3>
+          <p>That's the real reason any of this matters. Not aesthetics. Not Instagram. The visual noise in a disorganized space creates mental noise you carry all day. When the home resets, so do you.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY IT WORKS -->
+<section class="why">
+  <div class="why-inner">
+    <div class="label" style="color:rgba(255,255,255,.4);margin-bottom:18px;">Why this works</div>
+    <h2>It's not about motivation.<br>It's about <em>design.</em></h2>
+    <p>Most people think they're disorganized because they lack discipline. They're not. They lack systems. Discipline runs out. A well-designed system runs on autopilot.</p>
+    <p>These 10 habits work because they attach to things you already do — cooking, walking between rooms, going to bed. You're not adding tasks to your day. You're adding intention to the tasks that are already there.</p>
+    <p>That's the difference between organizing that lasts and organizing that falls apart in two weeks.</p>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-block">
+  <div class="quote-inner">
+    <blockquote>"The goal is never a perfect home. It's a home that works for your real life."</blockquote>
+    <div class="quote-attr">— Lorena Duarte, The Organizing Recipe</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <div class="label" style="color:rgba(255,255,255,.4);margin-bottom:18px;">Ready to go deeper?</div>
+    <h2>Let's build this system<br>inside <em>your</em> home.</h2>
+    <p>Reading it is one thing. Having it designed specifically for your space, your family, and your routine is another.</p>
+    <a class="book-btn" href="https://theorganizingrecipe.com/book-online" target="_blank">Book a Call with Lorena</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span>@theorganizingrecipe</span> &nbsp;·&nbsp; Denver, CO &nbsp;·&nbsp; theorganizingrecipe.com</p>
+</footer>
+
+</body>
+</html>
