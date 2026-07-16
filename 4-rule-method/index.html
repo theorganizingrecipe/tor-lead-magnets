@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 4-Rule Method — The Organizing Recipe™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --coral:  #FF7B5F;
+    --navy:   #26447D;
+    --blue:   #0084DD;
+    --cream:  #FDF5ED;
+    --dark:   #1A1A2E;
+    --gray:   #6B7280;
+    --light:  #F5EDE3;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: var(--coral);
+    opacity: .08;
+    top: -80px; right: -80px;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: var(--blue);
+    opacity: .07;
+    bottom: -60px; left: -40px;
+  }
+
+  .brand-tag {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    color: var(--coral);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    max-width: 640px;
+    margin: 0 auto 16px;
+  }
+
+  .hero h1 em {
+    color: var(--coral);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,.65);
+    max-width: 500px;
+    margin: 0 auto 32px;
+    font-weight: 300;
+  }
+
+  .coral-bar {
+    width: 48px; height: 4px;
+    background: var(--coral);
+    border-radius: 2px;
+    margin: 0 auto;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    background: var(--coral);
+    padding: 36px 24px;
+    text-align: center;
+  }
+  .intro p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.05rem, 3vw, 1.3rem);
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  .intro cite {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,.7);
+    margin-top: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+
+  /* ── RULES ── */
+  .rules-section {
+    padding: 56px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .rules-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .rules-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-top: 6px;
+  }
+
+  .rule-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 28px 28px 24px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    align-items: start;
+    box-shadow: 0 2px 16px rgba(38,68,125,.07);
+    border-left: 5px solid var(--accent, var(--coral));
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .rule-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(38,68,125,.12);
+  }
+
+  .rule-card:nth-child(1) { --accent: var(--coral); }
+  .rule-card:nth-child(2) { --accent: var(--navy); }
+  .rule-card:nth-child(3) { --accent: var(--blue); }
+  .rule-card:nth-child(4) { --accent: var(--coral); }
+
+  .rule-number {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--accent, var(--coral));
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .rule-content {}
+  .rule-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .rule-tagline {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent, var(--coral));
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .rule-body {
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.65;
+  }
+  .rule-insight {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--cream);
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: var(--gray);
+    font-style: italic;
+    border-left: 3px solid var(--accent, var(--coral));
+  }
+
+  /* ── APPLY BY ZONE ── */
+  .zones-section {
+    background: var(--navy);
+    padding: 56px 24px;
+  }
+  .zones-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .zones-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .zones-header .section-label { color: rgba(255,255,255,.5); }
+  .zones-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    font-weight: 900;
+    color: #fff;
+    margin-top: 6px;
+  }
+
+  .zones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .zone-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 14px;
+    padding: 22px 20px;
+    transition: background .2s;
+  }
+  .zone-card:hover { background: rgba(255,255,255,.1); }
+
+  .zone-icon {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .zone-name {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 8px;
+  }
+  .zone-rules {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .zone-rules li {
+    font-size: 12.5px;
+    color: rgba(255,255,255,.78);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .zone-rules li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-weight: 700;
+    font-size: 11px;
+    top: 1px;
+  }
+
+  /* ── DAILY CHECKLIST ── */
+  .checklist-section {
+    padding: 56px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .checklist-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .checklist-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    font-weight: 900;
+    color: var(--navy);
+    margin-top: 6px;
+  }
+
+  .checklist-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 540px) {
+    .checklist-columns { grid-template-columns: 1fr; }
+  }
+
+  .checklist-col h3 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--coral);
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .check-box {
+    width: 18px; height: 18px;
+    border: 2px solid var(--coral);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .checklist-col:last-child .check-box {
+    border-color: var(--navy);
+  }
+  .check-text {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.5;
+  }
+
+  /* ── LORENA NOTE ── */
+  .lorena-note {
+    background: var(--light);
+    border-left: 4px solid var(--coral);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 32px 0 0;
+  }
+  .lorena-note .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+  .lorena-note p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--coral);
+    padding: 56px 24px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .cta-section p {
+    font-size: 14px;
+    color: rgba(255,255,255,.82);
+    max-width: 480px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: var(--coral);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,.15);
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,.2);
+  }
+  .cta-sub {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,.6);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 24px;
+    text-align: center;
+  }
+  footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,.45);
+  }
+  footer span { color: var(--coral); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="brand-tag">The Organizing Recipe™ &nbsp;|&nbsp; Denver, CO</div>
+  <h1>Your house isn't dirty.<br><em>It's disorganized.</em></h1>
+  <p class="hero-sub">4 rules that take 5 minutes to learn and change how your home feels — permanently.</p>
+  <div class="coral-bar"></div>
+</section>
+
+<!-- INTRO QUOTE -->
+<section class="intro">
+  <p>"A clean home isn't one that gets cleaned more.<br>It's one that gets messy less."</p>
+  <cite>— Lorena Duarte, The Organizing Recipe™</cite>
+</section>
+
+<!-- THE 4 RULES -->
+<section class="rules-section">
+  <div class="rules-header">
+    <div class="section-label">The Method</div>
+    <h2>The 4 Rules — and the real reason they work</h2>
+  </div>
+
+  <!-- Rule 1 -->
+  <div class="rule-card">
+    <div class="rule-number">1</div>
+    <div class="rule-content">
+      <div class="rule-title">If you use it, put it back.</div>
+      <div class="rule-tagline">Every single time. Without exception.</div>
+      <div class="rule-body">
+        This is the rule that stops clutter before it starts. The counter doesn't get buried because of one bad night — it gets buried because of 47 small decisions to "deal with it later." When every item goes back to its home immediately after use, there's nothing to reset at the end of the day.
+      </div>
+      <div class="rule-insight">
+        The 2026 trend in organizing is "micro-habit systems" — tiny actions that happen automatically rather than requiring willpower. This rule is exactly that.
+      </div>
+    </div>
+  </div>
+
+  <!-- Rule 2 -->
+  <div class="rule-card">
+    <div class="rule-number">2</div>
+    <div class="rule-content">
+      <div class="rule-title">If you open it, close it.</div>
+      <div class="rule-tagline">Drawers, cabinets, doors. Order is also something you see.</div>
+      <div class="rule-body">
+        Half-open cabinets and drawers make a tidy space look chaotic. Your brain reads "open" as "unfinished." Closing everything you open is a 2-second habit that changes how a room feels — without moving a single item. It's the fastest visual reset that exists.
+      </div>
+      <div class="rule-insight">
+        Professional organizers call this "visual calm." Research shows that visual clutter increases cortisol levels — the stress hormone. Open drawers count as visual clutter.
+      </div>
+    </div>
+  </div>
+
+  <!-- Rule 3 -->
+  <div class="rule-card">
+    <div class="rule-number">3</div>
+    <div class="rule-content">
+      <div class="rule-title">If you make a mess, clean it now.</div>
+      <div class="rule-tagline">Not later. Now. Later always turns into never.</div>
+      <div class="rule-body">
+        "Later" is the most expensive word in home organization. Crumbs become crusted. Dishes become a pile. One unwashed pot becomes a full sink that nobody wants to touch. The time it takes to clean something immediately is always less than the time it takes to clean it after it's sat for hours — or days.
+      </div>
+      <div class="rule-insight">
+        This is the core of what organizers call "the avalanche effect." Clutter multiplies because messy surfaces give permission for more mess. One clean surface stays clean. One messy surface collects everything.
+      </div>
+    </div>
+  </div>
+
+  <!-- Rule 4 -->
+  <div class="rule-card">
+    <div class="rule-number">4</div>
+    <div class="rule-content">
+      <div class="rule-title">If it doesn't have a home, give it one — or let it go.</div>
+      <div class="rule-tagline">Homeless items are the root of all chaos.</div>
+      <div class="rule-body">
+        Every item sitting on your counter, floor, or that chair in the bedroom is there because it doesn't have a designated place. That's not a cleaning problem — it's a systems problem. Give it a permanent home and it will find its way there automatically. If you can't find a logical home for it, that's a sign you may not need it.
+      </div>
+      <div class="rule-insight">
+        In every home I've organized in Denver, the #1 source of chronic clutter is always items without a home. Not too little storage. Not too little time. Items that were never assigned a place.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY BY ZONE -->
+<section class="zones-section">
+  <div class="zones-inner">
+    <div class="zones-header">
+      <div class="section-label">Room by Room</div>
+      <h2>Apply the 4 rules in every space</h2>
+    </div>
+    <div class="zones-grid">
+
+      <div class="zone-card">
+        <div class="zone-icon">🍳</div>
+        <div class="zone-name">Kitchen</div>
+        <ul class="zone-rules">
+          <li>Counters cleared immediately after cooking</li>
+          <li>Cabinets and drawers always closed</li>
+          <li>Dishes washed or in dishwasher same night</li>
+          <li>Every appliance has a designated spot</li>
+        </ul>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-icon">🚪</div>
+        <div class="zone-name">Entryway</div>
+        <ul class="zone-rules">
+          <li>Bags go on hooks — never on the floor</li>
+          <li>Shoes in their spot the moment you take them off</li>
+          <li>Mail sorted the day it arrives (trash or file)</li>
+          <li>Nothing lives on the floor long-term</li>
+        </ul>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-icon">🛏</div>
+        <div class="zone-name">Bedroom</div>
+        <ul class="zone-rules">
+          <li>Clothes go in hamper or back in closet — not the chair</li>
+          <li>Nightstand surfaces cleared each morning</li>
+          <li>Closet door stays closed (visual calm)</li>
+          <li>Nothing stored under the bed without a bin and a reason</li>
+        </ul>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-icon">🛋</div>
+        <div class="zone-name">Living Areas</div>
+        <ul class="zone-rules">
+          <li>Blankets folded and returned after use</li>
+          <li>Remotes, books, toys back in their spot daily</li>
+          <li>Surfaces wiped and reset before bed</li>
+          <li>Ask: does this item actually belong in this room?</li>
+        </ul>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-icon">🚿</div>
+        <div class="zone-name">Bathroom</div>
+        <ul class="zone-rules">
+          <li>Counter cleared after every routine</li>
+          <li>Products have assigned spots in drawers</li>
+          <li>Towels hung immediately after use</li>
+          <li>Weekly: check for expired or unused products</li>
+        </ul>
+      </div>
+
+      <div class="zone-card">
+        <div class="zone-icon">🎒</div>
+        <div class="zone-name">Kids' Spaces</div>
+        <ul class="zone-rules">
+          <li>Bins at their eye level with picture labels</li>
+          <li>One toy category out at a time</li>
+          <li>Backpacks have a hook — always the same hook</li>
+          <li>Weekly edit: 1 item out for every new item in</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DAILY CHECKLIST -->
+<section class="checklist-section">
+  <div class="checklist-header">
+    <div class="section-label">Your Daily Reset</div>
+    <h2>5 minutes a day keeps the chaos away</h2>
+  </div>
+
+  <div class="checklist-columns">
+    <div class="checklist-col">
+      <h3>Morning — 5 min</h3>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Make the bed immediately after waking</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Clear kitchen counters from overnight</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Close every open drawer and cabinet</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Quick scan of entryway — nothing on floor</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Any homeless items from yesterday — assign a home now</div></div>
+    </div>
+    <div class="checklist-col">
+      <h3>Evening — 10 min</h3>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Kitchen reset: counters, dishwasher running</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Walk through main areas — put back anything out of place</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Clothes in hamper or closet — not the chair</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Tomorrow prep: bags, clothes, breakfast thought through</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Surfaces in common areas cleared before bed</div></div>
+    </div>
+  </div>
+
+  <div class="lorena-note">
+    <div class="label">From Lorena</div>
+    <p>"The families I work with who keep their homes organized aren't doing a big clean every weekend. They're doing 15 minutes a day consistently. The system does the work — you just have to show up for it."</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to build a system<br>that actually lasts?</h2>
+  <p>We work with Denver families to create custom organizing systems — from a 4-hour Mini Reset to a full Home Harmony. In-home sessions designed around your real life.</p>
+  <a class="cta-btn" href="https://www.theorganizingrecipe.com/book-online" target="_blank">Book Your Session</a>
+  <p class="cta-sub">@theorganizingrecipe &nbsp;·&nbsp; theorganizingrecipe.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>The Organizing Recipe™</span> &nbsp;|&nbsp; Denver, CO &nbsp;|&nbsp; @theorganizingrecipe</p>
+</footer>
+
+</body>
+</html>
