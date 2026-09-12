@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Deep Clean Checklist | The Organizing Recipe™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral: #FF7B5F;
+  --navy: #26447D;
+  --blue: #0084DD;
+  --cream: #FDF5ED;
+  --cream-dark: #F0E6D6;
+  --white: #fff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins',sans-serif; background:var(--cream); color:var(--navy); overflow-x:hidden; }
+
+/* HERO */
+.hero {
+  background:var(--navy);
+  padding:64px 24px 72px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute;
+  top:-80px; right:-80px;
+  width:280px; height:280px;
+  background:var(--coral); border-radius:50%; opacity:.09;
+}
+.hero::after {
+  content:''; position:absolute;
+  bottom:-60px; left:-60px;
+  width:220px; height:220px;
+  background:var(--blue); border-radius:50%; opacity:.11;
+}
+.badge {
+  display:inline-block;
+  background:var(--coral); color:#fff;
+  font-size:10px; font-weight:700;
+  letter-spacing:2.5px; text-transform:uppercase;
+  padding:7px 18px; border-radius:99px;
+  margin-bottom:24px;
+  position:relative; z-index:1;
+}
+.hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,6vw,46px);
+  font-weight:900; color:#fff;
+  line-height:1.15; margin-bottom:16px;
+  position:relative; z-index:1;
+}
+.hero h1 em { font-style:italic; color:var(--coral); }
+.hero-sub {
+  font-size:14px; color:rgba(255,255,255,.5);
+  max-width:480px; margin:0 auto;
+  line-height:1.7; font-weight:300;
+  position:relative; z-index:1;
+}
+
+/* RULES STRIP */
+.rules-strip {
+  background:var(--coral);
+  padding:20px 24px;
+  display:flex;
+  justify-content:center;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.rule-pill {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#fff;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.3px;
+}
+.rule-pill span {
+  width:22px; height:22px;
+  background:rgba(255,255,255,.2);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:700;
+  flex-shrink:0;
+}
+
+/* INTRO */
+.intro {
+  max-width:620px;
+  margin:0 auto;
+  padding:48px 24px 32px;
+  text-align:center;
+}
+.section-label {
+  font-size:10px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  color:var(--coral); margin-bottom:12px;
+}
+.intro h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,4vw,30px);
+  font-weight:900; color:var(--navy);
+  line-height:1.25; margin-bottom:16px;
+}
+.intro p {
+  font-size:14px; color:#4a5a7a;
+  line-height:1.85; font-weight:300;
+}
+
+/* CHECKLIST SECTIONS */
+.checklist-wrap {
+  max-width:680px;
+  margin:0 auto;
+  padding:0 24px 56px;
+}
+
+.zone {
+  margin-bottom:32px;
+  background:var(--white);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 2px 20px rgba(38,68,125,.07);
+}
+
+.zone-header {
+  padding:18px 24px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.zone-header.coral { background:var(--coral); }
+.zone-header.navy  { background:var(--navy); }
+.zone-header.blue  { background:var(--blue); }
+.zone-header.coral2 { background:#E8603F; }
+
+.zone-icon {
+  font-size:1.4rem;
+  flex-shrink:0;
+}
+.zone-title-wrap {}
+.zone-eyebrow {
+  font-size:9px; font-weight:700;
+  letter-spacing:2.5px; text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+  margin-bottom:2px;
+}
+.zone-name {
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem; font-weight:900;
+  color:#fff; line-height:1.1;
+}
+
+.zone-body { padding:8px 0 4px; }
+
+.check-item {
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:13px 24px;
+  border-bottom:1px solid rgba(38,68,125,.06);
+  transition:background .15s;
+}
+.check-item:last-of-type { border-bottom:none; }
+.check-item:hover { background:var(--cream); }
+
+.checkbox {
+  width:19px; height:19px; min-width:19px;
+  border:2px solid var(--coral);
+  border-radius:5px;
+  margin-top:2px;
+  cursor:pointer;
+  transition:background .15s, border-color .15s;
+  position:relative;
+}
+.checkbox.navy { border-color:var(--navy); }
+.checkbox.blue  { border-color:var(--blue); }
+.checkbox.coral2 { border-color:#E8603F; }
+
+.checkbox.checked {
+  background:var(--coral);
+  border-color:var(--coral);
+}
+.checkbox.checked::after {
+  content:'✓';
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+}
+.checkbox.navy.checked { background:var(--navy); border-color:var(--navy); }
+.checkbox.blue.checked  { background:var(--blue);  border-color:var(--blue); }
+.checkbox.coral2.checked { background:#E8603F; border-color:#E8603F; }
+
+.check-text {}
+.check-main {
+  font-size:13.5px; font-weight:600;
+  color:var(--navy); line-height:1.4;
+  margin-bottom:3px;
+}
+.check-sub {
+  font-size:12px; color:#6b7280;
+  font-weight:300; line-height:1.5;
+}
+
+.zone-tip {
+  margin:0 20px 16px;
+  padding:12px 16px;
+  background:var(--cream);
+  border-radius:10px;
+  border-left:3px solid var(--coral);
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+.zone-tip.navy { border-left-color:var(--navy); }
+.zone-tip.blue { border-left-color:var(--blue); }
+.zone-tip.coral2 { border-left-color:#E8603F; }
+
+.tip-label {
+  font-size:9px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--coral); white-space:nowrap; margin-top:1px;
+}
+.zone-tip.navy .tip-label { color:var(--navy); }
+.zone-tip.blue .tip-label { color:var(--blue); }
+.zone-tip.coral2 .tip-label { color:#E8603F; }
+
+.tip-text {
+  font-size:12px; color:#4a5a7a;
+  font-style:italic; line-height:1.6;
+  font-weight:300;
+}
+
+/* LORENA ORDER */
+.order-section {
+  background:var(--navy);
+  padding:48px 24px;
+}
+.order-inner { max-width:620px; margin:0 auto; }
+.order-inner .section-label { color:var(--coral); margin-bottom:12px; }
+.order-inner h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,4vw,28px);
+  font-weight:900; color:#fff;
+  line-height:1.2; margin-bottom:8px;
+}
+.order-sub {
+  font-size:13px; color:rgba(255,255,255,.45);
+  font-weight:300; line-height:1.7; margin-bottom:28px;
+}
+.order-steps {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+  gap:12px;
+}
+.order-step {
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;
+  padding:18px 16px;
+  text-align:center;
+  transition:background .2s;
+}
+.order-step:hover { background:rgba(255,255,255,.12); }
+.step-num {
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem; font-weight:900;
+  color:var(--coral); margin-bottom:6px;
+}
+.step-name {
+  font-size:12px; font-weight:600;
+  color:#fff; margin-bottom:4px;
+}
+.step-desc {
+  font-size:11px; color:rgba(255,255,255,.4);
+  font-weight:300; line-height:1.5;
+}
+
+/* PROGRESS */
+.progress-section {
+  max-width:620px; margin:0 auto;
+  padding:40px 24px 0;
+  text-align:center;
+}
+.progress-section .section-label { margin-bottom:10px; }
+.progress-section h3 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,3vw,22px);
+  font-weight:900; color:var(--navy);
+  margin-bottom:20px;
+}
+.progress-bar-wrap {
+  background:var(--cream-dark);
+  border-radius:99px; height:12px;
+  overflow:hidden; margin-bottom:8px;
+}
+.progress-bar {
+  height:100%; width:0%;
+  background:var(--coral);
+  border-radius:99px;
+  transition:width .4s ease;
+}
+.progress-label {
+  font-size:12px; color:#6b7280;
+  font-weight:500;
+}
+#progress-count {
+  font-weight:700; color:var(--coral);
+}
+
+/* CTA */
+.cta {
+  background:var(--navy);
+  padding:72px 24px;
+  text-align:center;
+  position:relative; overflow:hidden;
+  margin-top:56px;
+}
+.cta::before {
+  content:''; position:absolute;
+  top:-80px; right:-80px;
+  width:280px; height:280px;
+  background:var(--coral); border-radius:50%; opacity:.09;
+}
+.cta::after {
+  content:''; position:absolute;
+  bottom:-60px; left:-60px;
+  width:220px; height:220px;
+  background:var(--blue); border-radius:50%; opacity:.11;
+}
+.cta-inner { position:relative; z-index:1; max-width:500px; margin:0 auto; }
+.cta-label {
+  font-size:10px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  color:rgba(255,255,255,.4); margin-bottom:20px;
+}
+.cta h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,5vw,38px);
+  color:#fff; font-weight:900;
+  line-height:1.2; margin-bottom:16px;
+}
+.cta h2 em { font-style:italic; color:var(--coral); }
+.cta p {
+  font-size:14px; color:rgba(255,255,255,.5);
+  margin-bottom:40px; line-height:1.85; font-weight:300;
+}
+.book-btn {
+  display:block;
+  background:var(--coral); color:#fff;
+  font-family:'Poppins',sans-serif;
+  font-size:14px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:20px 48px; border-radius:99px;
+  text-decoration:none;
+  box-shadow:0 10px 32px rgba(255,123,95,.4);
+  transition:transform .2s, box-shadow .2s;
+  max-width:320px; margin:0 auto 16px;
+}
+.book-btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(255,123,95,.5);
+}
+.web-link {
+  display:inline-block;
+  color:rgba(255,255,255,.35);
+  font-size:12px; text-decoration:none;
+  letter-spacing:.5px; font-weight:300;
+  transition:color .2s;
+}
+.web-link:hover { color:rgba(255,255,255,.65); }
+
+/* FOOTER */
+footer {
+  background:#1a2f5e;
+  padding:28px 24px; text-align:center;
+}
+footer p {
+  font-size:12px; color:rgba(255,255,255,.3);
+  letter-spacing:.5px; line-height:1.8;
+}
+footer span { color:var(--coral); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">The Organizing Recipe™ · Denver, CO</div>
+  <h1>The Deep Clean<br><em>Checklist</em></h1>
+  <p class="hero-sub">Room by room. In the right order. So you stop cleaning the same things twice.</p>
+</section>
+
+<!-- RULES STRIP -->
+<div class="rules-strip">
+  <div class="rule-pill"><span>1</span> Declutter first, then clean</div>
+  <div class="rule-pill"><span>2</span> Top to bottom, dry to wet</div>
+  <div class="rule-pill"><span>3</span> One zone at a time</div>
+  <div class="rule-pill"><span>4</span> Check as you go</div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div class="section-label">Before You Start</div>
+  <h2>The order you clean in matters more than how hard you clean.</h2>
+  <p>Most people clean whatever bothers them most — which means they jump between rooms, repeat tasks, and exhaust themselves without finishing anything. This checklist gives you the exact sequence I follow in every Denver home I work in. One zone. Done right. Then the next.</p>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-section">
+  <div class="section-label">Your Progress</div>
+  <h3>Check off items as you go</h3>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <p class="progress-label"><span id="progress-count">0</span> of <span id="total-count">0</span> tasks completed</p>
+</div>
+
+<!-- CHECKLIST -->
+<div class="checklist-wrap">
+
+  <!-- KITCHEN -->
+  <div class="zone">
+    <div class="zone-header coral">
+      <div class="zone-icon">🍳</div>
+      <div class="zone-title-wrap">
+        <div class="zone-eyebrow">Zone 01 · Start here</div>
+        <div class="zone-name">Kitchen</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="check-item"><div class="checkbox" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Clear every counter completely</div><div class="check-sub">Everything back in its home before you wipe a single surface.</div></div></div>
+      <div class="check-item"><div class="checkbox" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Wipe counters and backsplash top to bottom</div><div class="check-sub">Use a degreaser for the area around the stove.</div></div></div>
+      <div class="check-item"><div class="checkbox" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Clean stovetop and burner grates</div><div class="check-sub">Soak grates while you clean the rest — it makes the scrubbing easier.</div></div></div>
+      <div class="check-item"><div class="checkbox" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Wipe inside and outside of microwave</div><div class="check-sub">A bowl of water + lemon in the microwave for 2 minutes loosens everything.</div></div></div>
+      <div class="check-item"><div class="checkbox" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Wipe cabinet fronts and handles</div><div class="check-sub">Grease builds up here silently. Don't skip it.</div></div></div>
+      <div class="check-item"><div class="checkbox" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Clean inside the fridge — toss expired items first</div><div class="check-sub">Edit before you wipe. Less stuff = faster cleaning.</div></div></div>
+      <div class="check-item"><div class="checkbox" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Scrub the sink and polish the faucet</div><div class="check-sub">The sink is the last thing you clean in the kitchen — it gets everything else's residue.</div></div></div>
+      <div class="check-item"><div class="checkbox" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Sweep and mop the floor</div><div class="check-sub">Always last in every room. Dust and crumbs fall as you clean above.</div></div></div>
+    </div>
+    <div class="zone-tip">
+      <div class="tip-label">Lorena</div>
+      <div class="tip-text">"I never clean a kitchen that hasn't been decluttered first. Moving clutter around a dirty counter isn't cleaning — it's rearranging."</div>
+    </div>
+  </div>
+
+  <!-- BATHROOMS -->
+  <div class="zone">
+    <div class="zone-header navy">
+      <div class="zone-icon">🚿</div>
+      <div class="zone-title-wrap">
+        <div class="zone-eyebrow">Zone 02 · Most satisfying</div>
+        <div class="zone-name">Bathrooms</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="check-item"><div class="checkbox navy" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Clear and wipe the countertop completely</div><div class="check-sub">Every product back in its drawer. No exceptions.</div></div></div>
+      <div class="check-item"><div class="checkbox navy" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Apply toilet cleaner — let it sit while you clean the rest</div><div class="check-sub">Start the cleaner first so it does the work while you move on.</div></div></div>
+      <div class="check-item"><div class="checkbox navy" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Wipe mirror top to bottom</div><div class="check-sub">Microfiber cloth + glass cleaner. No paper towels — they leave streaks.</div></div></div>
+      <div class="check-item"><div class="checkbox navy" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Scrub the sink and faucet</div><div class="check-sub">Toothpaste residue around the faucet base — don't skip it.</div></div></div>
+      <div class="check-item"><div class="checkbox navy" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Scrub the toilet — outside first, inside last</div><div class="check-sub">Lid, tank, base, seat, then bowl. Always in that order.</div></div></div>
+      <div class="check-item"><div class="checkbox navy" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Scrub shower or tub walls and floor</div><div class="check-sub">Spray and let sit for 3 minutes before scrubbing — cuts your effort in half.</div></div></div>
+      <div class="check-item"><div class="checkbox navy" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Empty trash and replace liner</div><div class="check-sub">Every bathroom. Every time.</div></div></div>
+      <div class="check-item"><div class="checkbox navy" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Mop or wipe the floor</div><div class="check-sub">Last step. Always.</div></div></div>
+    </div>
+    <div class="zone-tip navy">
+      <div class="tip-label">Lorena</div>
+      <div class="tip-text">"Apply the toilet cleaner first thing when you walk in. By the time you've cleaned everything else, it's ready to scrub. You'll save 5 minutes every single time."</div>
+    </div>
+  </div>
+
+  <!-- BEDROOMS -->
+  <div class="zone">
+    <div class="zone-header blue">
+      <div class="zone-icon">🛏</div>
+      <div class="zone-title-wrap">
+        <div class="zone-eyebrow">Zone 03 · Where you rest</div>
+        <div class="zone-name">Bedrooms</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="check-item"><div class="checkbox blue" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Put away everything that doesn't belong in this room</div><div class="check-sub">Return items to their actual homes before you touch a cleaning cloth.</div></div></div>
+      <div class="check-item"><div class="checkbox blue" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Strip the bed and wash all bedding</div><div class="check-sub">Pillowcases, sheets, duvet cover. All of it.</div></div></div>
+      <div class="check-item"><div class="checkbox blue" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Dust surfaces top to bottom</div><div class="check-sub">Ceiling fans first, then shelves, then nightstands. Dust falls — always work down.</div></div></div>
+      <div class="check-item"><div class="checkbox blue" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Wipe nightstands and dresser tops</div><div class="check-sub">Clear them first. Only put back what actually belongs there.</div></div></div>
+      <div class="check-item"><div class="checkbox blue" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Clean mirrors and glass surfaces</div><div class="check-sub">Microfiber cloth, top to bottom.</div></div></div>
+      <div class="check-item"><div class="checkbox blue" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Vacuum or sweep the floor including under the bed</div><div class="check-sub">Under the bed is where dust bunnies retire. Don't ignore it.</div></div></div>
+      <div class="check-item"><div class="checkbox blue" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Make the bed with clean sheets</div><div class="check-sub">This is the last step. It transforms how the whole room feels instantly.</div></div></div>
+    </div>
+    <div class="zone-tip blue">
+      <div class="tip-label">Lorena</div>
+      <div class="tip-text">"Research shows visual clutter in bedrooms raises cortisol — your stress hormone. A clean bedroom isn't a luxury. It's affecting how well you sleep every single night."</div>
+    </div>
+  </div>
+
+  <!-- LIVING AREAS -->
+  <div class="zone">
+    <div class="zone-header coral2">
+      <div class="zone-icon">🛋</div>
+      <div class="zone-title-wrap">
+        <div class="zone-eyebrow">Zone 04 · Finish strong</div>
+        <div class="zone-name">Living Areas & Entryway</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="check-item"><div class="checkbox coral2" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Return every homeless item to its designated space</div><div class="check-sub">Walk the room with a basket. Collect anything that doesn't belong here.</div></div></div>
+      <div class="check-item"><div class="checkbox coral2" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Dust shelves, TV unit, and decor top to bottom</div><div class="check-sub">Remote controls, lamp bases, picture frames — all of it.</div></div></div>
+      <div class="check-item"><div class="checkbox coral2" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Wipe down light switches and door handles</div><div class="check-sub">The most touched surfaces in the house. Consistently skipped in most cleans.</div></div></div>
+      <div class="check-item"><div class="checkbox coral2" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Fluff and reset sofa cushions and pillows</div><div class="check-sub">Vacuum the sofa surface and under the cushions.</div></div></div>
+      <div class="check-item"><div class="checkbox coral2" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Clean the entryway — floor, hooks, surfaces</div><div class="check-sub">This is the first and last thing you see every day. It sets the tone for the whole house.</div></div></div>
+      <div class="check-item"><div class="checkbox coral2" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Vacuum all rugs and carpets</div><div class="check-sub">Slow passes cover more than fast ones. Don't rush this step.</div></div></div>
+      <div class="check-item"><div class="checkbox coral2" onclick="toggle(this)"></div><div class="check-text"><div class="check-main">Sweep and mop hard floors</div><div class="check-sub">Always the last task in the house. You've been walking through every room — finish here.</div></div></div>
+    </div>
+    <div class="zone-tip coral2">
+      <div class="tip-label">Lorena</div>
+      <div class="tip-text">"Living areas collect items from every room in the house. Before you clean a single surface, spend 5 minutes returning things to where they actually live. It changes everything."</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- RIGHT ORDER -->
+<section class="order-section">
+  <div class="order-inner">
+    <div class="section-label">The Rule That Changes Everything</div>
+    <h2>Always clean in this order.</h2>
+    <p class="order-sub">Skip the sequence and you'll clean the same surfaces twice. Follow it and you move through the house without backtracking once.</p>
+    <div class="order-steps">
+      <div class="order-step">
+        <div class="step-num">01</div>
+        <div class="step-name">Declutter</div>
+        <div class="step-desc">Return items to their homes before touching a cloth</div>
+      </div>
+      <div class="order-step">
+        <div class="step-num">02</div>
+        <div class="step-name">Top to bottom</div>
+        <div class="step-desc">Dust falls. Always clean high surfaces first</div>
+      </div>
+      <div class="order-step">
+        <div class="step-num">03</div>
+        <div class="step-name">Dry to wet</div>
+        <div class="step-desc">Dust and sweep before any liquid touches a surface</div>
+      </div>
+      <div class="order-step">
+        <div class="step-num">04</div>
+        <div class="step-name">Floor last</div>
+        <div class="step-desc">Every zone. Every time. Without exception.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <div class="cta-label">The Organizing Recipe™ · Denver, CO</div>
+    <h2>A clean home is easier when<br>the <em>systems</em> are right.</h2>
+    <p>Deep cleaning is one thing. But if your home falls back into chaos two weeks later, the system isn't working. We help Denver families build organizing systems that hold — so the deep cleans are easier, faster, and less frequent.</p>
+    <a class="book-btn" href="https://www.theorganizingrecipe.com/book-online" target="_blank">Book Your Session</a>
+    <a class="web-link" href="https://www.theorganizingrecipe.com" target="_blank">theorganizingrecipe.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>The Organizing Recipe™</span> · Denver, CO · <span>@theorganizingrecipe</span><br>
+  theorganizingrecipe.com/book-online</p>
+</footer>
+
+<script>
+  function toggle(el) {
+    el.classList.toggle('checked');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.checkbox');
+    const checked = document.querySelectorAll('.checkbox.checked');
+    const total = all.length;
+    const done = checked.length;
+    const pct = total ? (done / total * 100) : 0;
+
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-count').textContent = done;
+    document.getElementById('total-count').textContent = total;
+  }
+
+  document.addEventListener('DOMContentLoaded', updateProgress);
+</script>
+
+</body>
+</html>
