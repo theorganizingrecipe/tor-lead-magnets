@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 5 Systems That Run My Home on Autopilot | The Organizing Recipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral: #FF7B5F;
+  --navy: #26447D;
+  --blue: #0084DD;
+  --cream: #FDF5ED;
+  --cream-dark: #F0E6D6;
+  --white: #fff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins',sans-serif; background:var(--cream); color:var(--navy); overflow-x:hidden; }
+
+/* HERO */
+.hero { background:var(--navy); padding:80px 24px 88px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-100px; right:-100px; width:320px; height:320px; background:var(--coral); border-radius:50%; opacity:.09; }
+.hero::after  { content:''; position:absolute; bottom:-80px; left:-80px; width:260px; height:260px; background:var(--blue); border-radius:50%; opacity:.11; }
+.badge { display:inline-block; background:var(--coral); color:#fff; font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; padding:8px 20px; border-radius:99px; margin-bottom:32px; position:relative; z-index:1; }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(30px,7vw,52px); font-weight:900; color:#fff; line-height:1.12; margin-bottom:20px; position:relative; z-index:1; }
+.hero h1 em { font-style:italic; color:var(--coral); }
+.hero-sub { font-size:14px; font-weight:300; color:rgba(255,255,255,.5); position:relative; z-index:1; line-height:1.8; }
+.hero-sub strong { color:var(--coral); font-weight:600; }
+.hero-tagline { font-family:'Playfair Display',serif; font-size:clamp(16px,3vw,20px); font-style:italic; color:rgba(255,255,255,.75); margin-top:20px; position:relative; z-index:1; }
+
+/* STORY */
+.story { background:var(--cream); padding:72px 24px; }
+.story-inner { max-width:600px; margin:0 auto; }
+.label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--coral); margin-bottom:18px; }
+
+.story-card { background:var(--white); border-radius:20px; padding:36px 32px; box-shadow:0 8px 32px rgba(38,68,125,.08); margin-bottom:48px; border-left:4px solid var(--coral); }
+.story-card p { font-size:15px; color:#4a5a7a; line-height:1.95; font-weight:300; margin-bottom:20px; }
+.story-card p:last-child { margin-bottom:0; }
+.story-card p em { font-style:italic; color:var(--navy); font-weight:500; }
+.story-card p strong { color:var(--coral); font-weight:600; }
+
+.lorena-intro h2 { font-family:'Playfair Display',serif; font-size:clamp(24px,5vw,34px); font-weight:900; color:var(--navy); line-height:1.2; margin-bottom:28px; }
+.lorena-intro p { font-size:15px; color:#4a5a7a; line-height:1.95; font-weight:300; margin-bottom:20px; }
+.lorena-intro p:last-child { margin-bottom:0; }
+.lorena-intro p strong { color:var(--navy); font-weight:600; }
+
+.pull { background:var(--navy); border-radius:20px; padding:36px 28px; text-align:center; margin:48px 0 0; }
+.pull p { font-family:'Playfair Display',serif; font-size:clamp(19px,4vw,26px); font-style:italic; font-weight:700; color:#fff; line-height:1.45; margin-bottom:12px; }
+.pull span { font-size:11px; color:rgba(255,255,255,.4); font-family:'Poppins',sans-serif; font-style:normal; font-weight:300; letter-spacing:1px; }
+
+/* SYSTEMS */
+.systems { background:var(--white); padding:72px 24px; }
+.systems-inner { max-width:600px; margin:0 auto; }
+.systems-header { text-align:center; margin-bottom:60px; }
+.systems-header h2 { font-family:'Playfair Display',serif; font-size:clamp(26px,5vw,38px); font-weight:900; color:var(--navy); line-height:1.2; margin-bottom:14px; }
+.systems-header p { font-size:14px; color:#8a9ab5; line-height:1.7; max-width:480px; margin:0 auto; }
+
+.system-block { margin-bottom:56px; padding-bottom:56px; border-bottom:1px solid var(--cream-dark); }
+.system-block:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
+
+.system-top { display:flex; align-items:flex-start; gap:20px; margin-bottom:22px; }
+.system-num { font-family:'Playfair Display',serif; font-size:52px; font-weight:900; color:var(--cream-dark); line-height:1; min-width:60px; }
+.system-tag { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--coral); margin-bottom:7px; }
+.system-meta h3 { font-family:'Playfair Display',serif; font-size:clamp(20px,4vw,27px); font-weight:900; color:var(--navy); line-height:1.2; }
+
+.system-body p { font-size:15px; color:#4a5a7a; line-height:1.9; font-weight:300; margin-bottom:18px; }
+.system-body p:last-child { margin-bottom:0; }
+.system-body p strong { color:var(--navy); font-weight:600; }
+
+.system-rule { background:var(--cream); border-radius:12px; padding:16px 20px; margin-top:22px; display:flex; align-items:center; gap:12px; }
+.rule-dot { width:8px; height:8px; min-width:8px; background:var(--coral); border-radius:50%; }
+.system-rule p { font-size:13px; font-weight:600; color:var(--navy); margin:0; line-height:1.55; }
+
+/* WHY */
+.why { background:var(--navy); padding:72px 24px; text-align:center; }
+.why-inner { max-width:580px; margin:0 auto; }
+.why h2 { font-family:'Playfair Display',serif; font-size:clamp(26px,5vw,38px); color:#fff; font-weight:900; line-height:1.2; margin-bottom:22px; }
+.why h2 em { font-style:italic; color:var(--coral); }
+.why p { font-size:15px; color:rgba(255,255,255,.55); line-height:1.9; font-weight:300; margin-bottom:20px; max-width:520px; margin-left:auto; margin-right:auto; }
+.why p:last-child { margin-bottom:0; }
+.why p strong { color:rgba(255,255,255,.85); font-weight:600; }
+
+/* CLOSING */
+.closing { background:var(--cream); padding:64px 24px; text-align:center; }
+.closing-inner { max-width:500px; margin:0 auto; }
+blockquote { font-family:'Playfair Display',serif; font-size:clamp(22px,4vw,32px); font-style:italic; font-weight:700; color:var(--navy); line-height:1.35; margin-bottom:20px; }
+.attr { font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--coral); }
+
+/* CTA */
+.cta { background:var(--navy); padding:88px 24px; text-align:center; position:relative; overflow:hidden; }
+.cta::before { content:''; position:absolute; top:-80px; right:-80px; width:280px; height:280px; background:var(--coral); border-radius:50%; opacity:.09; }
+.cta::after  { content:''; position:absolute; bottom:-60px; left:-60px; width:220px; height:220px; background:var(--blue); border-radius:50%; opacity:.11; }
+.cta-inner { position:relative; z-index:1; max-width:480px; margin:0 auto; }
+.cta-label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:20px; }
+.cta h2 { font-family:'Playfair Display',serif; font-size:clamp(28px,6vw,42px); color:#fff; font-weight:900; line-height:1.15; margin-bottom:18px; }
+.cta h2 em { font-style:italic; color:var(--coral); }
+.cta p { font-size:15px; color:rgba(255,255,255,.5); margin-bottom:44px; line-height:1.85; font-weight:300; }
+.book-btn { display:block; background:var(--coral); color:#fff; font-family:'Poppins',sans-serif; font-size:14px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:20px 48px; border-radius:99px; text-decoration:none; max-width:320px; margin:0 auto 20px; box-shadow:0 10px 32px rgba(255,123,95,.4); transition:transform .2s,box-shadow .2s; }
+.book-btn:hover { transform:translateY(-2px); box-shadow:0 16px 40px rgba(255,123,95,.5); }
+.web-link { display:inline-block; color:rgba(255,255,255,.35); font-size:12px; text-decoration:none; font-weight:300; transition:color .2s; }
+.web-link:hover { color:rgba(255,255,255,.6); }
+
+/* FOOTER */
+footer { background:#1a2f5e; padding:28px 24px; text-align:center; }
+footer p { font-size:10px; color:rgba(255,255,255,.28); letter-spacing:2px; text-transform:uppercase; line-height:1.8; }
+footer a { color:var(--coral); text-decoration:none; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">Free Resource — The Organizing Recipe</div>
+  <h1>The 5 Systems That Run<br>My Home <em>on Autopilot</em></h1>
+  <p class="hero-sub">by <strong>Lorena Duarte</strong> · The Organizing Recipe · Denver, CO</p>
+  <p class="hero-tagline">"My home isn't perfect. My system is."</p>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-inner">
+
+    <div class="label">It started on a Tuesday morning</div>
+
+    <div class="story-card">
+      <p>There was a Tuesday morning where everything went sideways at once. Coffee spilled on the counter. She couldn't find her keys. Her daughter needed a permission slip she was sure she'd left "somewhere safe." And she had a client walkthrough in 40 minutes.</p>
+      <p>She didn't panic. She didn't spiral.</p>
+      <p>She wiped the counter in 30 seconds because her caddy was right there. Her keys were on the hook by the door, <em>where they always are.</em> The permission slip was in the paper tray she set up specifically so things like that don't disappear.</p>
+      <p>She was still <strong>five minutes early</strong> to the walkthrough.</p>
+      <p>Not because she has it all together. Because she built systems for the moments when she doesn't.</p>
+    </div>
+
+    <div class="lorena-intro">
+      <div class="label">A note from Lorena</div>
+      <h2>I'm not naturally organized.<br>I'm systematically organized.</h2>
+      <p>I don't clean the whole house every day. Some days I only clean the kitchen and the bathroom and call it done. I don't own a duster. I've bought the same pair of scissors three times because I couldn't find the ones I already had.</p>
+      <p>What changed wasn't my personality. It wasn't my motivation. It was my design.</p>
+      <p>I stopped trying to be the kind of person who keeps a perfect home and started building the kind of home that keeps itself. Five systems. That's it. They don't require discipline. They don't require energy I don't have. They just run.</p>
+      <p><strong>This is what I build in every single home I organize across Denver. And now I'm giving it to you.</strong></p>
+    </div>
+
+    <div class="pull">
+      <p>"Motivation comes and goes. A well-designed system just runs."</p>
+      <span>Lorena Duarte · The Organizing Recipe</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- 5 SYSTEMS -->
+<section class="systems">
+  <div class="systems-inner">
+
+    <div class="systems-header">
+      <div class="label">The 5 systems</div>
+      <h2>Each one eliminates a decision.<br>That's the whole point.</h2>
+      <p>You don't need more discipline. You need fewer decisions. These systems take the thinking out of your home so your brain can focus on everything else.</p>
+    </div>
+
+    <div class="system-block">
+      <div class="system-top">
+        <div class="system-num">01</div>
+        <div class="system-meta">
+          <div class="system-tag">System one</div>
+          <h3>The Drop Zone</h3>
+        </div>
+      </div>
+      <div class="system-body">
+        <p>Everything that enters your home needs a landing spot. Keys, bags, mail, jackets, shoes. Without a designated drop zone, all of that ends up on the counter, the floor, or the first flat surface available.</p>
+        <p>A drop zone is not complicated. It's a hook by the door for keys. A basket for bags. A small tray for mail. The exact items depend on your home and your habits. The principle is always the same: <strong>things that come in need a place to land before they go anywhere else.</strong></p>
+        <p>When the drop zone exists, you stop losing things at the door. When it doesn't, you spend Tuesday mornings tearing the house apart looking for your keys.</p>
+        <div class="system-rule">
+          <div class="rule-dot"></div>
+          <p>The rule: everything that enters the house touches the drop zone first.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="system-block">
+      <div class="system-top">
+        <div class="system-num">02</div>
+        <div class="system-meta">
+          <div class="system-tag">System two</div>
+          <h3>The Laundry Loop</h3>
+        </div>
+      </div>
+      <div class="system-body">
+        <p>Laundry doesn't pile up because people are lazy. It piles up because there's no fixed route. Clean laundry sits in the dryer because there's no set time to fold it. Dirty laundry ends up on the floor because the hamper is in the wrong room or there aren't enough of them.</p>
+        <p>The Laundry Loop means every item of clothing has exactly two possible locations: the hamper or the closet. <strong>No chair. No floor. No "I'll deal with it later" pile.</strong> Just those two options, always.</p>
+        <p>Add one fixed laundry day where it goes in, gets folded, and gets put away before the day ends. One complete loop, once a week.</p>
+        <div class="system-rule">
+          <div class="rule-dot"></div>
+          <p>The rule: clean goes in the closet, dirty goes in the hamper. Nothing waits on a surface.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="system-block">
+      <div class="system-top">
+        <div class="system-num">03</div>
+        <div class="system-meta">
+          <div class="system-tag">System three</div>
+          <h3>The Kitchen Reset</h3>
+        </div>
+      </div>
+      <div class="system-body">
+        <p>The kitchen is the room that sets the emotional tone of your entire home. When it's clean, everything feels manageable. When it's not, the whole house feels like it's falling apart.</p>
+        <p>The Kitchen Reset is not a deep clean. It's a 3 minute reset that happens at the same moment every single day, right after dinner. Counters wiped. Sink empty. Dishes away. That's it.</p>
+        <p><strong>The power is in the consistency, not the duration.</strong> When the reset happens every night without exception, the kitchen never reaches the point where it feels overwhelming. You're never starting from zero. You're always starting from almost there.</p>
+        <div class="system-rule">
+          <div class="rule-dot"></div>
+          <p>The rule: the kitchen resets every night before bed. Three minutes. No exceptions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="system-block">
+      <div class="system-top">
+        <div class="system-num">04</div>
+        <div class="system-meta">
+          <div class="system-tag">System four</div>
+          <h3>The One In, One Out Rule</h3>
+        </div>
+      </div>
+      <div class="system-body">
+        <p>Most homes don't fill up all at once. They fill up slowly, quietly, over years. A new candle here. A new towel set there. Clothes that "might fit again someday." Kitchen gadgets used once and forgotten.</p>
+        <p>The One In, One Out Rule stops the slow accumulation before it starts. Every time something new enters your home, something else leaves. New shoes arrive, an old pair goes. New book on the shelf, one leaves. New kitchen tool, one gets donated.</p>
+        <p><strong>This is the system that keeps the other systems working long term.</strong> Without it, even the most organized home slowly refills. With it, your space stays calibrated to your real life automatically.</p>
+        <div class="system-rule">
+          <div class="rule-dot"></div>
+          <p>The rule: one thing in, one thing out. Every time. Without exception.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="system-block">
+      <div class="system-top">
+        <div class="system-num">05</div>
+        <div class="system-meta">
+          <div class="system-tag">System five</div>
+          <h3>The Sunday Scan</h3>
+        </div>
+      </div>
+      <div class="system-body">
+        <p>Even with four solid systems running, life happens. A busy week. Travel. Sick kids. The kind of days where you just survive and deal with the rest later.</p>
+        <p>The Sunday Scan is your safety net. Ten minutes, once a week. Walk through every room. Return anything that drifted. Check what needs restocking. That's it.</p>
+        <p>It's not a cleaning session. It's a calibration. <strong>It's the reason one chaotic week never becomes a chaotic month.</strong> The scan catches the drift before it compounds. You start Monday from calm instead of chaos.</p>
+        <div class="system-rule">
+          <div class="rule-dot"></div>
+          <p>The rule: ten minutes every Sunday. Walk, return, reset. The week starts clean.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY IT WORKS -->
+<section class="why">
+  <div class="why-inner">
+    <div class="label" style="color:rgba(255,255,255,.4);margin-bottom:18px;">Why these work when everything else doesn't</div>
+    <h2>They don't rely on<br><em>motivation.</em></h2>
+    <p>Every organizing method that fails, fails for the same reason. It requires you to feel like doing it. And some days, honestly, you don't feel like doing it.</p>
+    <p>These five systems are designed around your worst days, not your best ones. They work when you're tired. They work when you're overwhelmed. They work when the last thing you want to do is think about your home.</p>
+    <p><strong>Because they eliminate the decision.</strong> You don't decide where the keys go. You don't decide when to reset the kitchen. You don't decide what to do with the new thing you bought. The system decides. You just follow the path that's already there.</p>
+    <p>That's the difference between a home that feels controlled and one that feels like it controls you.</p>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="closing">
+  <div class="closing-inner">
+    <blockquote>"I still have messy days. But I don't have messy weeks anymore."</blockquote>
+    <div class="attr">Lorena Duarte · The Organizing Recipe · Denver, CO</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <div class="cta-label">Ready to build this in your home?</div>
+    <h2>Let's design these systems<br>around <em>your</em> real life.</h2>
+    <p>Reading about systems is one thing. Having them built specifically for your space, your family, and your actual routine is another. That's what a session with Lorena does.</p>
+    <a class="book-btn" href="https://theorganizingrecipe.com/book-online" target="_blank">Book a Call with Lorena</a>
+    <a class="web-link" href="https://theorganizingrecipe.com" target="_blank">theorganizingrecipe.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <a href="https://instagram.com/theorganizingrecipe" target="_blank">@theorganizingrecipe</a>
+    &nbsp;·&nbsp; Denver, CO &nbsp;·&nbsp;
+    <a href="https://theorganizingrecipe.com" target="_blank">theorganizingrecipe.com</a>
+  </p>
+</footer>
+
+</body>
+</html>
