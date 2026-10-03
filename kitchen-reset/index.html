@@ -4,13 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The 10-Minute Kitchen Reset · The Organizing Recipe™</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --coral: #FF7B5F;
+    --coral-light: #FF9B85;
     --navy: #26447D;
+    --navy-dark: #1a2f5a;
     --blue: #0084DD;
     --cream: #FDF5ED;
     --white: #ffffff;
@@ -18,81 +20,171 @@
     --text-mid: #4a4a6a;
   }
 
+  html { scroll-behavior: smooth; }
+
   body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--cream);
     color: var(--text-dark);
     line-height: 1.7;
+    overflow-x: hidden;
   }
 
-  /* HERO */
-  .hero {
-    background-color: var(--navy);
-    padding: 72px 24px 64px;
-    text-align: center;
+  /* ── FADE-IN ON SCROLL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
   }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1a2f5a 0%, #26447D 50%, #1e3a6e 100%);
+    padding: 90px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(255,123,95,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-orb 4s ease-in-out infinite;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(0,132,221,0.14) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-orb 5s ease-in-out infinite reverse;
+  }
+  @keyframes pulse-orb {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+  }
+  .hero-inner { position: relative; z-index: 2; }
   .hero-eyebrow {
-    font-family: 'Poppins', sans-serif;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 3px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
     color: var(--coral);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+    display: inline-block;
+    border: 1px solid rgba(255,123,95,0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(255,123,95,0.08);
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 6vw, 60px);
+    font-size: clamp(38px, 7vw, 68px);
     font-weight: 700;
     color: var(--white);
-    line-height: 1.15;
-    max-width: 700px;
-    margin: 0 auto 20px;
+    line-height: 1.1;
+    max-width: 720px;
+    margin: 0 auto 24px;
   }
-  .hero h1 span {
+  .hero h1 .italic-coral {
     color: var(--coral);
     font-style: italic;
+    display: block;
   }
   .hero-sub {
-    font-size: clamp(15px, 2vw, 17px);
+    font-size: clamp(15px, 2vw, 18px);
     font-weight: 300;
-    color: rgba(255,255,255,0.78);
-    max-width: 560px;
-    margin: 0 auto;
+    color: rgba(255,255,255,0.72);
+    max-width: 520px;
+    margin: 0 auto 40px;
+  }
+  .hero-scroll-hint {
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll-hint::after { content: ' ↓'; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
   }
 
-  /* MATH BLOCK */
+  /* ── MATH BLOCK ── */
   .math-block {
-    background-color: var(--coral);
-    padding: 56px 24px;
+    background: var(--coral);
+    padding: 64px 24px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
+  .math-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.04) 20px,
+      rgba(255,255,255,0.04) 40px
+    );
+  }
+  .math-inner { position: relative; z-index: 1; }
   .math-equation {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 4.5vw, 42px);
+    font-size: clamp(24px, 5vw, 48px);
     color: var(--white);
     font-weight: 700;
-    letter-spacing: -0.5px;
+    line-height: 1.3;
   }
-  .math-equation .eq-sign {
-    color: rgba(255,255,255,0.6);
+  .math-equation .highlight {
+    background: rgba(255,255,255,0.18);
+    padding: 4px 14px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 0 6px;
+  }
+  .math-equation .eq {
+    color: rgba(255,255,255,0.55);
     font-style: italic;
-    font-weight: 400;
+    font-size: 0.8em;
   }
   .math-sub {
-    margin-top: 12px;
+    margin-top: 14px;
     font-size: 14px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.82);
+    color: rgba(255,255,255,0.78);
     letter-spacing: 0.5px;
   }
 
-  /* LORENA QUOTE */
+  /* ── PULLQUOTE ── */
   .pullquote {
-    background-color: var(--white);
-    padding: 64px 24px;
+    background: var(--white);
+    padding: 72px 24px;
     text-align: center;
-    border-bottom: 3px solid var(--cream);
+  }
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: var(--coral);
+    line-height: 0.5;
+    margin-bottom: 24px;
+    display: block;
+    opacity: 0.4;
   }
   .pullquote blockquote {
     font-family: 'Playfair Display', serif;
@@ -100,24 +192,23 @@
     font-style: italic;
     color: var(--navy);
     max-width: 680px;
-    margin: 0 auto 20px;
-    line-height: 1.6;
+    margin: 0 auto 24px;
+    line-height: 1.65;
   }
   .pullquote cite {
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--coral);
     font-style: normal;
   }
 
-  /* SECTION WRAPPER */
+  /* ── SECTION WRAPPER ── */
   .section {
-    max-width: 720px;
+    max-width: 760px;
     margin: 0 auto;
-    padding: 72px 24px;
+    padding: 80px 24px;
   }
   .section-label {
     font-size: 11px;
@@ -125,151 +216,211 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--coral);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(26px, 4vw, 38px);
+    font-size: clamp(28px, 4.5vw, 42px);
     font-weight: 700;
     color: var(--navy);
     margin-bottom: 10px;
-    line-height: 1.25;
+    line-height: 1.2;
   }
   .section-intro {
     font-size: 15px;
     color: var(--text-mid);
-    margin-bottom: 44px;
+    margin-bottom: 48px;
     font-weight: 300;
   }
 
-  /* STEPS */
-  .steps-list {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
+  /* ── STEPS ── */
+  .steps-bg { background: var(--cream); }
+  .steps-list { display: flex; flex-direction: column; gap: 20px; }
+
   .step-card {
     background: var(--white);
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 28px 28px 28px 24px;
     display: flex;
     gap: 20px;
     align-items: flex-start;
-    border-left: 4px solid var(--coral);
-    box-shadow: 0 2px 12px rgba(38,68,125,0.06);
+    border-left: 5px solid var(--coral);
+    box-shadow: 0 4px 20px rgba(38,68,125,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .step-card:hover {
+    transform: translateX(6px) translateY(-2px);
+    box-shadow: 0 12px 40px rgba(38,68,125,0.14);
   }
   .step-number {
     font-family: 'Playfair Display', serif;
-    font-size: 36px;
+    font-size: 42px;
     font-weight: 700;
     color: var(--coral);
     line-height: 1;
-    min-width: 36px;
-    padding-top: 2px;
+    min-width: 44px;
+    opacity: 0.85;
   }
-  .step-body {}
   .step-title {
     font-size: 16px;
     font-weight: 600;
     color: var(--navy);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
   }
   .step-time {
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--white);
     background: var(--navy);
-    padding: 3px 8px;
+    padding: 3px 10px;
     border-radius: 20px;
   }
   .step-desc {
     font-size: 14px;
     color: var(--text-mid);
-    line-height: 1.65;
+    line-height: 1.7;
     font-weight: 300;
   }
 
-  /* MINDSET HERO BLOCK */
+  /* ── MINDSET BLOCK ── */
   .mindset-block {
-    background-color: var(--coral);
-    padding: 72px 24px;
+    background: linear-gradient(135deg, var(--coral) 0%, #e8613e 100%);
+    padding: 80px 24px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .mindset-block::before {
+    content: '"';
+    position: absolute;
+    top: -20px; left: 5%;
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    color: rgba(255,255,255,0.07);
+    line-height: 1;
   }
   .mindset-block blockquote {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(18px, 3vw, 28px);
+    font-size: clamp(19px, 3.2vw, 30px);
     font-style: italic;
     color: var(--white);
     max-width: 640px;
     margin: 0 auto;
     line-height: 1.6;
+    position: relative;
+    z-index: 1;
   }
 
-  /* WHY IT WORKS */
-  .why-section {
-    background-color: var(--white);
-  }
+  /* ── WHY IT WORKS ── */
+  .why-bg { background: var(--white); }
   .why-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-    margin-top: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
   }
   .why-card {
     background: var(--cream);
-    border-radius: 12px;
-    padding: 28px 24px;
+    border-radius: 16px;
+    padding: 32px 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 3px solid transparent;
+  }
+  .why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(38,68,125,0.12);
+    border-bottom-color: var(--coral);
   }
   .why-icon {
-    font-size: 28px;
-    margin-bottom: 12px;
+    font-size: 32px;
+    margin-bottom: 14px;
+    display: block;
   }
   .why-card h3 {
     font-size: 15px;
     font-weight: 600;
     color: var(--navy);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .why-card p {
     font-size: 13px;
     color: var(--text-mid);
-    line-height: 1.6;
+    line-height: 1.65;
     font-weight: 300;
   }
 
-  /* VIDEOS */
-  .videos-section {
-    background-color: var(--cream);
+  /* ── STAT BAR ── */
+  .stat-bar {
+    background: var(--navy);
+    padding: 56px 24px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
   }
+  .stat-item {
+    text-align: center;
+    padding: 20px 40px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: var(--coral);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1px;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  /* ── VIDEOS ── */
+  .videos-bg { background: var(--cream); }
   .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 20px;
-    margin-top: 8px;
   }
   .video-card {
     background: var(--white);
-    border-radius: 14px;
+    border-radius: 18px;
     overflow: hidden;
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 2px 14px rgba(38,68,125,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 20px rgba(38,68,125,0.09);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  .video-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+    pointer-events: none;
   }
   .video-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 28px rgba(38,68,125,0.14);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 48px rgba(38,68,125,0.18);
   }
+  .video-card:hover::after { border-color: var(--coral); }
   .video-thumb {
     background: var(--navy);
-    aspect-ratio: 9/16;
-    max-height: 200px;
+    aspect-ratio: 9/14;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -280,91 +431,140 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .video-card:hover .video-thumb img { transform: scale(1.06); }
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,47,90,0.7) 0%, transparent 50%);
   }
   .play-btn {
     position: absolute;
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     background: var(--coral);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
+    box-shadow: 0 0 0 0 rgba(255,123,95,0.5);
+    animation: glow-pulse 2.5s infinite;
+    transition: transform 0.2s;
+  }
+  .video-card:hover .play-btn { transform: scale(1.12); }
+  @keyframes glow-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,123,95,0.55); }
+    70% { box-shadow: 0 0 0 14px rgba(255,123,95,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,123,95,0); }
   }
   .play-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 20px; height: 20px;
     fill: white;
     margin-left: 3px;
   }
   .video-label {
-    padding: 16px;
+    padding: 18px 16px;
     font-size: 13px;
     font-weight: 500;
     color: var(--navy);
     line-height: 1.45;
   }
-
-  /* CTA */
-  .cta-section {
-    background-color: var(--navy);
-    padding: 80px 24px;
-    text-align: center;
+  .video-watch-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--coral);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 16px 16px;
   }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: linear-gradient(135deg, #1a2f5a 0%, var(--navy) 60%, #1e3a6e 100%);
+    padding: 96px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,123,95,0.12) 0%, transparent 65%);
+    border-radius: 50%;
+    animation: pulse-orb 5s ease-in-out infinite;
+  }
+  .cta-inner { position: relative; z-index: 2; }
   .cta-section h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(26px, 4vw, 40px);
+    font-size: clamp(28px, 4.5vw, 44px);
     color: var(--white);
     font-weight: 700;
-    max-width: 560px;
-    margin: 0 auto 16px;
-    line-height: 1.25;
+    max-width: 580px;
+    margin: 0 auto 18px;
+    line-height: 1.2;
   }
   .cta-section p {
-    font-size: 15px;
-    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
     max-width: 500px;
-    margin: 0 auto 36px;
+    margin: 0 auto 44px;
     font-weight: 300;
-    line-height: 1.7;
+    line-height: 1.75;
   }
   .cta-btn {
     display: inline-block;
-    background-color: var(--coral);
+    background: var(--coral);
     color: var(--white);
     font-family: 'Poppins', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
-    padding: 16px 44px;
+    padding: 18px 52px;
     border-radius: 50px;
     text-decoration: none;
-    letter-spacing: 0.3px;
-    transition: opacity 0.2s;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 0 0 rgba(255,123,95,0.5);
+    animation: btn-glow 2.5s ease-in-out infinite;
+    transition: transform 0.2s, opacity 0.2s;
+    position: relative;
   }
-  .cta-btn:hover { opacity: 0.88; }
+  .cta-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    opacity: 0.93;
+  }
+  @keyframes btn-glow {
+    0% { box-shadow: 0 0 0 0 rgba(255,123,95,0.55), 0 8px 32px rgba(255,123,95,0.35); }
+    70% { box-shadow: 0 0 0 18px rgba(255,123,95,0), 0 8px 32px rgba(255,123,95,0.35); }
+    100% { box-shadow: 0 0 0 0 rgba(255,123,95,0), 0 8px 32px rgba(255,123,95,0.35); }
+  }
   .cta-note {
-    margin-top: 16px;
+    margin-top: 18px;
     font-size: 12px;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.3px;
   }
 
-  /* FOOTER */
+  /* ── FOOTER ── */
   footer {
-    background-color: #1a1f36;
-    padding: 32px 24px;
+    background: #111827;
+    padding: 36px 24px;
     text-align: center;
     font-size: 12px;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.35);
     letter-spacing: 0.5px;
   }
-  footer span {
-    color: var(--coral);
-  }
+  footer span { color: var(--coral); }
 
-  @media (max-width: 480px) {
+  /* ── RESPONSIVE ── */
+  @media (max-width: 560px) {
     .step-card { flex-direction: column; gap: 8px; }
-    .step-number { font-size: 28px; }
+    .step-number { font-size: 32px; }
+    .stat-item { padding: 16px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .stat-item:last-child { border-bottom: none; }
   }
 </style>
 </head>
@@ -372,143 +572,178 @@
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">Free Resource · The Organizing Recipe™</p>
-  <h1>The 10-Minute<br><span>Kitchen Reset</span></h1>
-  <p class="hero-sub">A nightly routine that keeps your kitchen from feeling like the first problem you have to solve every morning.</p>
+  <div class="hero-inner">
+    <p class="hero-eyebrow reveal visible">Free Resource · The Organizing Recipe™</p>
+    <h1 class="reveal visible" style="transition-delay:0.1s">
+      The 10-Minute
+      <span class="italic-coral">Kitchen Reset</span>
+    </h1>
+    <p class="hero-sub reveal visible" style="transition-delay:0.2s">A nightly routine that keeps your kitchen from feeling like the first problem you have to solve every morning.</p>
+    <p class="hero-scroll-hint reveal visible" style="transition-delay:0.35s">Scroll to read</p>
+  </div>
 </section>
 
 <!-- MATH BLOCK -->
 <div class="math-block">
-  <p class="math-equation">10 minutes tonight <span class="eq-sign">=</span> 90 seconds tomorrow morning</p>
-  <p class="math-sub">That's the whole trade-off. One small investment, every night.</p>
+  <div class="math-inner reveal">
+    <p class="math-equation">
+      <span class="highlight">10 minutes</span>
+      tonight
+      <span class="eq"> = </span>
+      <span class="highlight">90 seconds</span>
+      tomorrow morning
+    </p>
+    <p class="math-sub">That's the whole trade-off. One small investment, every night.</p>
+  </div>
 </div>
 
 <!-- LORENA QUOTE -->
 <div class="pullquote">
-  <blockquote>"Most people think a clean kitchen is about discipline. It's not. It's about doing one small thing for the version of yourself who wakes up tomorrow."</blockquote>
-  <cite>— Lorena Duarte, The Organizing Recipe™</cite>
+  <span class="quote-mark reveal">"</span>
+  <blockquote class="reveal">"Most people think a clean kitchen is about discipline. It's not. It's about doing one small thing for the version of yourself who wakes up tomorrow."</blockquote>
+  <cite class="reveal reveal-delay-1">— Lorena Duarte, The Organizing Recipe™</cite>
 </div>
 
 <!-- 5-STEP RESET -->
-<div style="background-color: var(--cream);">
+<div class="steps-bg">
   <div class="section">
-    <p class="section-label">The Method</p>
-    <h2 class="section-title">The 5-Step Reset</h2>
-    <p class="section-intro">In order. Under 10 minutes total.</p>
+    <p class="section-label reveal">The Method</p>
+    <h2 class="section-title reveal reveal-delay-1">The 5-Step Reset</h2>
+    <p class="section-intro reveal reveal-delay-2">In order. Under 10 minutes total.</p>
 
     <div class="steps-list">
-
-      <div class="step-card">
+      <div class="step-card reveal reveal-delay-1">
         <div class="step-number">1</div>
         <div class="step-body">
           <div class="step-title">Clear every flat surface <span class="step-time">2 min</span></div>
           <p class="step-desc">Counters, table, stovetop. Mail, bags, whatever landed there today. Move it where it belongs — not to another flat surface.</p>
         </div>
       </div>
-
-      <div class="step-card">
+      <div class="step-card reveal reveal-delay-2">
         <div class="step-number">2</div>
         <div class="step-body">
           <div class="step-title">Handle the dishes <span class="step-time">3 min</span></div>
           <p class="step-desc">Dishwasher on, hand-wash what's left. Dishes in the sink at 7am are the number one thing that makes a morning feel like it's already falling apart — before you've had coffee.</p>
         </div>
       </div>
-
-      <div class="step-card">
+      <div class="step-card reveal reveal-delay-3">
         <div class="step-number">3</div>
         <div class="step-body">
           <div class="step-title">Wipe the counter and stove <span class="step-time">2 min</span></div>
           <p class="step-desc">A damp cloth. Takes 90 seconds. Walking into a clean stove in the morning is a completely different feeling than you'd expect.</p>
         </div>
       </div>
-
-      <div class="step-card">
+      <div class="step-card reveal reveal-delay-4">
         <div class="step-number">4</div>
         <div class="step-body">
           <div class="step-title">Reset your landing zone <span class="step-time">2 min</span></div>
-          <p class="step-desc">Wherever things collect — the corner of the counter, the end of the island. Two minutes returning it to neutral is what prevents tomorrow's pile from forming in the first place.</p>
+          <p class="step-desc">Wherever things collect — the corner of the counter, the end of the island. Two minutes returning it to neutral prevents tomorrow's pile from forming in the first place.</p>
         </div>
       </div>
-
-      <div class="step-card">
+      <div class="step-card reveal reveal-delay-5">
         <div class="step-number">5</div>
         <div class="step-body">
           <div class="step-title">Set up one thing for morning <span class="step-time">1 min</span></div>
           <p class="step-desc">Coffee maker ready. Lunch box on the counter. Backpacks by the door. One small thing that removes a decision from tomorrow-you before you even wake up.</p>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
 <!-- MINDSET BLOCK -->
 <div class="mindset-block">
-  <blockquote>"You're not cleaning for tonight-you. You're doing it for morning-you. That's the only mindset shift that makes this stick."</blockquote>
+  <blockquote class="reveal">"You're not cleaning for tonight-you. You're doing it for morning-you. That's the only mindset shift that makes this stick."</blockquote>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-item reveal reveal-delay-1">
+    <span class="stat-num" data-target="10">0</span>
+    <span class="stat-label">Minutes / night</span>
+  </div>
+  <div class="stat-item reveal reveal-delay-2">
+    <span class="stat-num" data-target="90">0</span>
+    <span class="stat-label">Seconds saved / morning</span>
+  </div>
+  <div class="stat-item reveal reveal-delay-3">
+    <span class="stat-num" data-target="5">0</span>
+    <span class="stat-label">Simple steps</span>
+  </div>
+  <div class="stat-item reveal reveal-delay-4">
+    <span class="stat-num">0</span>
+    <span class="stat-label">Motivation required</span>
+  </div>
 </div>
 
 <!-- WHY IT WORKS -->
-<div class="why-section">
+<div class="why-bg">
   <div class="section">
-    <p class="section-label">Why It Works</p>
-    <h2 class="section-title">It's not about motivation.<br>It's about design.</h2>
-    <p class="section-intro">The homes that stay organized aren't cleaner people. They have better systems.</p>
+    <p class="section-label reveal">Why It Works</p>
+    <h2 class="section-title reveal reveal-delay-1">It's not about motivation.<br>It's about design.</h2>
+    <p class="section-intro reveal reveal-delay-2">The homes that stay organized aren't cleaner people. They have better systems.</p>
     <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">🧠</div>
+      <div class="why-card reveal reveal-delay-1">
+        <span class="why-icon">🧠</span>
         <h3>Decision fatigue is real</h3>
-        <p>Every mess you see in the morning costs you mental energy. The reset removes decisions before they happen.</p>
+        <p>Every mess you see in the morning costs mental energy before the day starts. The reset removes decisions before they happen.</p>
       </div>
-      <div class="why-card">
-        <div class="why-icon">🔁</div>
+      <div class="why-card reveal reveal-delay-2">
+        <span class="why-icon">🔁</span>
         <h3>Small habits compound</h3>
-        <p>10 minutes at night means your morning starts already 20 minutes ahead. That gap grows over weeks.</p>
+        <p>10 minutes at night means your morning starts already 20 minutes ahead. That gap grows over weeks and months.</p>
       </div>
-      <div class="why-card">
-        <div class="why-icon">🏡</div>
+      <div class="why-card reveal reveal-delay-3">
+        <span class="why-icon">🏡</span>
         <h3>Your home sets the tone</h3>
-        <p>Walking into a clean kitchen at 6:30am tells your nervous system the day is manageable. That signal matters.</p>
+        <p>Walking into a clean kitchen at 6:30am tells your nervous system the day is manageable. That signal matters more than you think.</p>
       </div>
     </div>
   </div>
 </div>
 
 <!-- VIDEOS -->
-<div class="videos-section">
+<div class="videos-bg">
   <div class="section">
-    <p class="section-label">Watch It In Action</p>
-    <h2 class="section-title">Lorena breaks it down<br>in under 60 seconds.</h2>
-    <p class="section-intro">Tap any video to watch on YouTube.</p>
+    <p class="section-label reveal">Watch It In Action</p>
+    <h2 class="section-title reveal reveal-delay-1">Lorena breaks it down<br>in under 60 seconds.</h2>
+    <p class="section-intro reveal reveal-delay-2">Tap any video to watch on YouTube.</p>
     <div class="video-grid">
 
-      <a class="video-card" href="https://www.youtube.com/shorts/3LUQsCjaY8U" target="_blank" rel="noopener">
+      <a class="video-card reveal reveal-delay-1" href="https://www.youtube.com/shorts/3LUQsCjaY8U" target="_blank" rel="noopener">
         <div class="video-thumb">
-          <img src="https://i.ytimg.com/vi/3LUQsCjaY8U/hqdefault.jpg" alt="The 10-minute reset, step by step" loading="lazy">
+          <img src="https://i.ytimg.com/vi/3LUQsCjaY8U/hqdefault.jpg" alt="The 10-minute reset" loading="lazy">
+          <div class="video-overlay"></div>
           <div class="play-btn">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
         </div>
         <div class="video-label">The 10-minute reset, step by step</div>
+        <div class="video-watch-tag">Watch on YouTube ↗</div>
       </a>
 
-      <a class="video-card" href="https://www.youtube.com/shorts/BHPqXe7ppW0" target="_blank" rel="noopener">
+      <a class="video-card reveal reveal-delay-2" href="https://www.youtube.com/shorts/BHPqXe7ppW0" target="_blank" rel="noopener">
         <div class="video-thumb">
           <img src="https://i.ytimg.com/vi/BHPqXe7ppW0/hqdefault.jpg" alt="Why mornings feel chaotic" loading="lazy">
+          <div class="video-overlay"></div>
           <div class="play-btn">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
         </div>
         <div class="video-label">Why mornings feel chaotic (and how to fix it tonight)</div>
+        <div class="video-watch-tag">Watch on YouTube ↗</div>
       </a>
 
-      <a class="video-card" href="https://www.youtube.com/shorts/VzdjsTELhkc" target="_blank" rel="noopener">
+      <a class="video-card reveal reveal-delay-3" href="https://www.youtube.com/shorts/VzdjsTELhkc" target="_blank" rel="noopener">
         <div class="video-thumb">
           <img src="https://i.ytimg.com/vi/VzdjsTELhkc/hqdefault.jpg" alt="The landing zone rule" loading="lazy">
+          <div class="video-overlay"></div>
           <div class="play-btn">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
         </div>
         <div class="video-label">The landing zone rule that changes everything</div>
+        <div class="video-watch-tag">Watch on YouTube ↗</div>
       </a>
 
     </div>
@@ -517,10 +752,12 @@
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2>Ready to make your whole home feel like this?</h2>
-  <p>Lorena works with Denver families to build routines and systems that actually last. One session can change the way your home feels every single day.</p>
-  <a class="cta-btn" href="https://www.theorganizingrecipe.com/book-online" target="_blank" rel="noopener">Book a Session</a>
-  <p class="cta-note">Or find the link in bio at @theorganizingrecipe</p>
+  <div class="cta-inner">
+    <h2 class="reveal">Ready to make your whole home feel like this?</h2>
+    <p class="reveal reveal-delay-1">Lorena works with Denver families to build routines and systems that actually last. One session can change the way your home feels every single day.</p>
+    <a class="cta-btn reveal reveal-delay-2" href="https://www.theorganizingrecipe.com/book-online" target="_blank" rel="noopener">Book a Session</a>
+    <p class="cta-note reveal reveal-delay-3">Or find the link in bio at @theorganizingrecipe</p>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -528,5 +765,42 @@
   <p>The Organizing Recipe™ · Denver, CO · <span>@theorganizingrecipe</span></p>
 </footer>
 
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Counter animation ──
+  function animateCount(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1600;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = parseInt(e.target.dataset.target);
+        if (target) animateCount(e.target, target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+</script>
 </body>
 </html>
