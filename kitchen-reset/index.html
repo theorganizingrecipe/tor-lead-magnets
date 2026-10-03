@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 10-Minute Kitchen Reset · The Organizing Recipe™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --coral: #FF7B5F;
+    --navy: #26447D;
+    --blue: #0084DD;
+    --cream: #FDF5ED;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-mid: #4a4a6a;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background-color: var(--navy);
+    padding: 72px 24px 64px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 700px;
+    margin: 0 auto 20px;
+  }
+  .hero h1 span {
+    color: var(--coral);
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: clamp(15px, 2vw, 17px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.78);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* MATH BLOCK */
+  .math-block {
+    background-color: var(--coral);
+    padding: 56px 24px;
+    text-align: center;
+  }
+  .math-equation {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 4.5vw, 42px);
+    color: var(--white);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .math-equation .eq-sign {
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .math-sub {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.82);
+    letter-spacing: 0.5px;
+  }
+
+  /* LORENA QUOTE */
+  .pullquote {
+    background-color: var(--white);
+    padding: 64px 24px;
+    text-align: center;
+    border-bottom: 3px solid var(--cream);
+  }
+  .pullquote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-style: italic;
+    color: var(--navy);
+    max-width: 680px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+  }
+  .pullquote cite {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--coral);
+    font-style: normal;
+  }
+
+  /* SECTION WRAPPER */
+  .section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 72px 24px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: var(--text-mid);
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  /* STEPS */
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .step-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 28px 28px 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border-left: 4px solid var(--coral);
+    box-shadow: 0 2px 12px rgba(38,68,125,0.06);
+  }
+  .step-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--coral);
+    line-height: 1;
+    min-width: 36px;
+    padding-top: 2px;
+  }
+  .step-body {}
+  .step-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .step-time {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--navy);
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+  .step-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* MINDSET HERO BLOCK */
+  .mindset-block {
+    background-color: var(--coral);
+    padding: 72px 24px;
+    text-align: center;
+  }
+  .mindset-block blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 3vw, 28px);
+    font-style: italic;
+    color: var(--white);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* WHY IT WORKS */
+  .why-section {
+    background-color: var(--white);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .why-card {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+  .why-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .why-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .why-card p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* VIDEOS */
+  .videos-section {
+    background-color: var(--cream);
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .video-card {
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 14px rgba(38,68,125,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .video-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(38,68,125,0.14);
+  }
+  .video-thumb {
+    background: var(--navy);
+    aspect-ratio: 9/16;
+    max-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .play-btn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    background: var(--coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .play-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+    margin-left: 3px;
+  }
+  .video-label {
+    padding: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.45;
+  }
+
+  /* CTA */
+  .cta-section {
+    background-color: var(--navy);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    color: var(--white);
+    font-weight: 700;
+    max-width: 560px;
+    margin: 0 auto 16px;
+    line-height: 1.25;
+  }
+  .cta-section p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 500px;
+    margin: 0 auto 36px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .cta-btn {
+    display: inline-block;
+    background-color: var(--coral);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 44px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.88; }
+  .cta-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* FOOTER */
+  footer {
+    background-color: #1a1f36;
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.5px;
+  }
+  footer span {
+    color: var(--coral);
+  }
+
+  @media (max-width: 480px) {
+    .step-card { flex-direction: column; gap: 8px; }
+    .step-number { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Free Resource · The Organizing Recipe™</p>
+  <h1>The 10-Minute<br><span>Kitchen Reset</span></h1>
+  <p class="hero-sub">A nightly routine that keeps your kitchen from feeling like the first problem you have to solve every morning.</p>
+</section>
+
+<!-- MATH BLOCK -->
+<div class="math-block">
+  <p class="math-equation">10 minutes tonight <span class="eq-sign">=</span> 90 seconds tomorrow morning</p>
+  <p class="math-sub">That's the whole trade-off. One small investment, every night.</p>
+</div>
+
+<!-- LORENA QUOTE -->
+<div class="pullquote">
+  <blockquote>"Most people think a clean kitchen is about discipline. It's not. It's about doing one small thing for the version of yourself who wakes up tomorrow."</blockquote>
+  <cite>— Lorena Duarte, The Organizing Recipe™</cite>
+</div>
+
+<!-- 5-STEP RESET -->
+<div style="background-color: var(--cream);">
+  <div class="section">
+    <p class="section-label">The Method</p>
+    <h2 class="section-title">The 5-Step Reset</h2>
+    <p class="section-intro">In order. Under 10 minutes total.</p>
+
+    <div class="steps-list">
+
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-body">
+          <div class="step-title">Clear every flat surface <span class="step-time">2 min</span></div>
+          <p class="step-desc">Counters, table, stovetop. Mail, bags, whatever landed there today. Move it where it belongs — not to another flat surface.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-body">
+          <div class="step-title">Handle the dishes <span class="step-time">3 min</span></div>
+          <p class="step-desc">Dishwasher on, hand-wash what's left. Dishes in the sink at 7am are the number one thing that makes a morning feel like it's already falling apart — before you've had coffee.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-body">
+          <div class="step-title">Wipe the counter and stove <span class="step-time">2 min</span></div>
+          <p class="step-desc">A damp cloth. Takes 90 seconds. Walking into a clean stove in the morning is a completely different feeling than you'd expect.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <div class="step-body">
+          <div class="step-title">Reset your landing zone <span class="step-time">2 min</span></div>
+          <p class="step-desc">Wherever things collect — the corner of the counter, the end of the island. Two minutes returning it to neutral is what prevents tomorrow's pile from forming in the first place.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">5</div>
+        <div class="step-body">
+          <div class="step-title">Set up one thing for morning <span class="step-time">1 min</span></div>
+          <p class="step-desc">Coffee maker ready. Lunch box on the counter. Backpacks by the door. One small thing that removes a decision from tomorrow-you before you even wake up.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MINDSET BLOCK -->
+<div class="mindset-block">
+  <blockquote>"You're not cleaning for tonight-you. You're doing it for morning-you. That's the only mindset shift that makes this stick."</blockquote>
+</div>
+
+<!-- WHY IT WORKS -->
+<div class="why-section">
+  <div class="section">
+    <p class="section-label">Why It Works</p>
+    <h2 class="section-title">It's not about motivation.<br>It's about design.</h2>
+    <p class="section-intro">The homes that stay organized aren't cleaner people. They have better systems.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🧠</div>
+        <h3>Decision fatigue is real</h3>
+        <p>Every mess you see in the morning costs you mental energy. The reset removes decisions before they happen.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔁</div>
+        <h3>Small habits compound</h3>
+        <p>10 minutes at night means your morning starts already 20 minutes ahead. That gap grows over weeks.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏡</div>
+        <h3>Your home sets the tone</h3>
+        <p>Walking into a clean kitchen at 6:30am tells your nervous system the day is manageable. That signal matters.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div class="videos-section">
+  <div class="section">
+    <p class="section-label">Watch It In Action</p>
+    <h2 class="section-title">Lorena breaks it down<br>in under 60 seconds.</h2>
+    <p class="section-intro">Tap any video to watch on YouTube.</p>
+    <div class="video-grid">
+
+      <a class="video-card" href="https://www.youtube.com/shorts/3LUQsCjaY8U" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img src="https://i.ytimg.com/vi/3LUQsCjaY8U/hqdefault.jpg" alt="The 10-minute reset, step by step" loading="lazy">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-label">The 10-minute reset, step by step</div>
+      </a>
+
+      <a class="video-card" href="https://www.youtube.com/shorts/BHPqXe7ppW0" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img src="https://i.ytimg.com/vi/BHPqXe7ppW0/hqdefault.jpg" alt="Why mornings feel chaotic" loading="lazy">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-label">Why mornings feel chaotic (and how to fix it tonight)</div>
+      </a>
+
+      <a class="video-card" href="https://www.youtube.com/shorts/VzdjsTELhkc" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img src="https://i.ytimg.com/vi/VzdjsTELhkc/hqdefault.jpg" alt="The landing zone rule" loading="lazy">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-label">The landing zone rule that changes everything</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to make your whole home feel like this?</h2>
+  <p>Lorena works with Denver families to build routines and systems that actually last. One session can change the way your home feels every single day.</p>
+  <a class="cta-btn" href="https://www.theorganizingrecipe.com/book-online" target="_blank" rel="noopener">Book a Session</a>
+  <p class="cta-note">Or find the link in bio at @theorganizingrecipe</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>The Organizing Recipe™ · Denver, CO · <span>@theorganizingrecipe</span></p>
+</footer>
+
+</body>
+</html>
