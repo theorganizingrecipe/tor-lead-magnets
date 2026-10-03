@@ -390,14 +390,13 @@
   .videos-bg { background: var(--cream); }
   .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
   }
   .video-card {
     background: var(--white);
     border-radius: 18px;
     overflow: hidden;
-    text-decoration: none;
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 20px rgba(38,68,125,0.09);
@@ -414,58 +413,27 @@
     pointer-events: none;
   }
   .video-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     box-shadow: 0 20px 48px rgba(38,68,125,0.18);
   }
   .video-card:hover::after { border-color: var(--coral); }
-  .video-thumb {
-    background: var(--navy);
-    aspect-ratio: 9/14;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .video-embed-wrap {
     position: relative;
+    width: 100%;
+    /* 9:16 shorts ratio */
+    padding-bottom: 177.78%;
+    background: var(--navy);
     overflow: hidden;
   }
-  .video-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .video-card:hover .video-thumb img { transform: scale(1.06); }
-  .video-overlay {
+  .video-embed-wrap iframe {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(26,47,90,0.7) 0%, transparent 50%);
-  }
-  .play-btn {
-    position: absolute;
-    width: 52px;
-    height: 52px;
-    background: var(--coral);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    box-shadow: 0 0 0 0 rgba(255,123,95,0.5);
-    animation: glow-pulse 2.5s infinite;
-    transition: transform 0.2s;
-  }
-  .video-card:hover .play-btn { transform: scale(1.12); }
-  @keyframes glow-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255,123,95,0.55); }
-    70% { box-shadow: 0 0 0 14px rgba(255,123,95,0); }
-    100% { box-shadow: 0 0 0 0 rgba(255,123,95,0); }
-  }
-  .play-btn svg {
-    width: 20px; height: 20px;
-    fill: white;
-    margin-left: 3px;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
   .video-label {
-    padding: 18px 16px;
+    padding: 16px 16px 8px;
     font-size: 13px;
     font-weight: 500;
     color: var(--navy);
@@ -706,45 +674,33 @@
 <div class="videos-bg">
   <div class="section">
     <p class="section-label reveal">Watch It In Action</p>
-    <h2 class="section-title reveal reveal-delay-1">Lorena breaks it down<br>in under 60 seconds.</h2>
-    <p class="section-intro reveal reveal-delay-2">Tap any video to watch on YouTube.</p>
+    <h2 class="section-title reveal reveal-delay-1">Watch the Who's Next series.</h2>
+    <p class="section-intro reveal reveal-delay-2">Lorena documents real home transformations — play any episode below.</p>
     <div class="video-grid">
 
-      <a class="video-card reveal reveal-delay-1" href="https://www.youtube.com/shorts/3LUQsCjaY8U" target="_blank" rel="noopener">
-        <div class="video-thumb">
-          <img src="https://i.ytimg.com/vi/3LUQsCjaY8U/hqdefault.jpg" alt="The 10-minute reset" loading="lazy">
-          <div class="video-overlay"></div>
-          <div class="play-btn">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
+      <div class="video-card reveal reveal-delay-1">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/3LUQsCjaY8U" title="The 10-minute reset, step by step" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-label">The 10-minute reset, step by step</div>
-        <div class="video-watch-tag">Watch on YouTube ↗</div>
-      </a>
+        <div class="video-watch-tag">Who's Next · Ep. 1</div>
+      </div>
 
-      <a class="video-card reveal reveal-delay-2" href="https://www.youtube.com/shorts/BHPqXe7ppW0" target="_blank" rel="noopener">
-        <div class="video-thumb">
-          <img src="https://i.ytimg.com/vi/BHPqXe7ppW0/hqdefault.jpg" alt="Why mornings feel chaotic" loading="lazy">
-          <div class="video-overlay"></div>
-          <div class="play-btn">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
+      <div class="video-card reveal reveal-delay-2">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/BHPqXe7ppW0" title="Why mornings feel chaotic" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-label">Why mornings feel chaotic (and how to fix it tonight)</div>
-        <div class="video-watch-tag">Watch on YouTube ↗</div>
-      </a>
+        <div class="video-watch-tag">Who's Next · Ep. 2</div>
+      </div>
 
-      <a class="video-card reveal reveal-delay-3" href="https://www.youtube.com/shorts/VzdjsTELhkc" target="_blank" rel="noopener">
-        <div class="video-thumb">
-          <img src="https://i.ytimg.com/vi/VzdjsTELhkc/hqdefault.jpg" alt="The landing zone rule" loading="lazy">
-          <div class="video-overlay"></div>
-          <div class="play-btn">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
+      <div class="video-card reveal reveal-delay-3">
+        <div class="video-embed-wrap">
+          <iframe src="https://www.youtube.com/embed/VzdjsTELhkc" title="The landing zone rule" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-label">The landing zone rule that changes everything</div>
-        <div class="video-watch-tag">Watch on YouTube ↗</div>
-      </a>
+        <div class="video-watch-tag">Who's Next · Ep. 3</div>
+      </div>
 
     </div>
   </div>
