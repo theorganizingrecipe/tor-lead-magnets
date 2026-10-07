@@ -868,21 +868,25 @@
       </div>
       <div class="gate-form-row">
         <div class="gate-group">
+          <label for="gPhone">Phone number</label>
+          <input type="tel" id="gPhone" name="phone" placeholder="(720) 555-0100" autocomplete="tel">
+        </div>
+        <div class="gate-group">
           <label for="gZip">Zip code</label>
           <input type="text" id="gZip" name="zipcode" placeholder="80202" maxlength="5" autocomplete="postal-code">
         </div>
-        <div class="gate-group">
-          <label for="gSpace">Space you want to tackle</label>
-          <select id="gSpace" name="space">
-            <option value="" disabled selected>Select…</option>
-            <option value="Kitchen">Kitchen</option>
-            <option value="Closet">Closet</option>
-            <option value="Bedroom">Bedroom</option>
-            <option value="Garage">Garage</option>
-            <option value="Full home">Full home</option>
-            <option value="Other">Other / Not sure yet</option>
-          </select>
-        </div>
+      </div>
+      <div class="gate-group">
+        <label for="gSpace">Space you want to tackle</label>
+        <select id="gSpace" name="space">
+          <option value="" disabled selected>Select…</option>
+          <option value="Kitchen">Kitchen</option>
+          <option value="Closet">Closet</option>
+          <option value="Bedroom">Bedroom</option>
+          <option value="Garage">Garage</option>
+          <option value="Full home">Full home</option>
+          <option value="Other">Other / Not sure yet</option>
+        </select>
       </div>
 
       <button type="submit" class="gate-submit" id="gateSubmit">
@@ -1166,6 +1170,7 @@
 
     const name    = document.getElementById('gName').value.trim();
     const email   = document.getElementById('gEmail').value.trim();
+    const phone   = document.getElementById('gPhone').value.trim();
     const zipcode = document.getElementById('gZip').value.trim();
     const space   = document.getElementById('gSpace').value;
     const btn     = document.getElementById('gateSubmit');
@@ -1187,7 +1192,7 @@
     fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, zipcode, space })
+      body: JSON.stringify({ name, email, phone, zipcode, space })
     }).catch(() => {}); // silent fail — lead reveal is not gated on webhook success
 
     // Small delay for UX feel, then reveal content
